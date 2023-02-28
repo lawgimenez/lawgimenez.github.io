@@ -24,6 +24,50 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2023/02/24/diablo-immortal-on.html">Diablo Immortal on Linux</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/02/24/diablo-immortal-on.html" class="u-url"><time class="dt-published" datetime="2023-02-24 21:14:04 &#43;0800">Feb 24, 2023</time></a>
+
+		<div class="e-content">
+			 <p>I was able to run Diablo Immortal on Linux, despite only being available on iOS, Android, and Windows. I know for a fact that I needed <a href="https://www.winehq.org/">Wine</a> to be able to run a Windows environment or application in Linux. But, I just found out you need to install <a href="https://lutris.net/">Lutris</a> too.</p>
+<p>For future reference, the steps are below. I am on <a href="https://getfedora.org/">Fedora</a>.</p>
+<ol>
+<li>Install Wine</li>
+</ol>
+<pre tabindex="0"><code>sudo dnf install wine
+</code></pre><ol start="2">
+<li>Install Lutris</li>
+</ol>
+<pre tabindex="0"><code>sudo dnf install lutris
+</code></pre><blockquote>
+<p>If Lutris won’t start, try installing it via Flatpak.</p>
+</blockquote>
+<ol start="3">
+<li>Install Winetricks</li>
+</ol>
+<pre tabindex="0"><code>sudo dnf install winetricks
+</code></pre><ol start="4">
+<li>Visit <a href="https://lutris.net/games/battlenet/">this Lutris Battle.net link</a> and click on Install. It should display a dialog and click on continue. And just proceed and follow instructions.</li>
+<li>It took some time to figure out the perfect settings to run Battle.net, I was able to get a reference from this <a href="https://www.reddit.com/r/DiabloImmortal/comments/v3esq1/diablo_immortal_on_linux/">Reddit post</a>. The settings that worked for me were, check the image below. Take note of the Wine version and the settings below it.</li>
+</ol>
+<ul>
+<li>Latest Lutris Proton runner</li>
+<li>DXVK Version 1.10L</li>
+<li>VKD3D Version 2.6</li>
+<li>D3D Extras Version 2</li>
+<li>DXVK NVAPI Version 0.5.3</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>And after all that, Battle.net should run after signing in.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2023/02/07/my-first-contribution.html">My first contribution to Google/Android</a></h1>
 		
 
