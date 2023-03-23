@@ -7,10 +7,19 @@
 	"items": [
 		
 			{
+				"id": "http://lwgmnz.micro.blog/2023/03/09/google-io.html",
+				"title": "Google I/O 2023",
+				"content_html": "<p>It&rsquo;s that time of the year. I&rsquo;m surprised that Google announced the event this early.</p>\n<!-- raw HTML omitted -->\n",
+				"content_text": "It's that time of the year. I'm surprised that Google announced the event this early.\n\n<img src=\"uploads/2023/4de51dfc9a.png\" width=\"600\" height=\"274\" alt=\"\" />\n",
+				"date_published": "2023-03-09T08:28:41+08:00",
+				"url": "https://law.gmnz.xyz/2023/03/09/google-io.html",
+				"tags": ["android"]
+			},
+			{
 				"id": "http://lwgmnz.micro.blog/2023/03/08/proud-homeowners.html",
-				
-				"content_html": "<p>Proud homeowners</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Proud homeowners\n\n<img src=\"uploads/2023/3324073397.jpg\" width=\"337\" height=\"600\" alt=\"\">\n",
+				"title": "New Home",
+				"content_html": "<p>My wife and I are proud homeowners today. After 3 years in the making, we finally got the keys to our new house.</p>\n<!-- raw HTML omitted -->\n",
+				"content_text": "My wife and I are proud homeowners today. After 3 years in the making, we finally got the keys to our new house.\n\n<img src=\"uploads/2023/3324073397.jpg\" width=\"337\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-03-08T23:59:45+08:00",
 				"url": "https://law.gmnz.xyz/2023/03/08/proud-homeowners.html"
 			},
