@@ -7,6 +7,23 @@
 	"items": [
 		
 			{
+				"id": "http://lwgmnz.micro.blog/2023/03/25/jetpack-compose-part.html",
+				"title": "Jetpack Compose Journey Part 1",
+				"content_html": "<p>This will be my first time delving into Jetpack Compose for a rewrite of our existing app. I believe I have no time to study or do a full Google code lab for this one, due to the constraints of the timeline and deadline. So I will have to go head first and rely on my &gt; 11 years of experience.</p>\n<h3 id=\"setup\">Setup</h3>\n<p>So with every new Android project, I created one. Every new project from Android has been plagued by inconsistency. For example, some Groovy formats are in double quotes and single quotes.</p>\n<!-- raw HTML omitted -->\n<h3 id=\"build-issues\">Build Issues</h3>\n<p>When upgrading <code>kotlinCompilerExtensionVersion</code>, I encountered build issues as expected. It turns out I need to sync it with the latest Kotlin version too, based on this <a href=\"https://developer.android.com/jetpack/androidx/releases/compose-kotlin\">compatibility map</a>. Leaving out `compose_version&quot; seems to not affect the build issues. So,</p>\n<pre tabindex=\"0\"><code>id 'org.jetbrains.kotlin.android' version &quot;1.8.10&quot; apply false\n</code></pre><p>and</p>\n<pre tabindex=\"0\"><code>composeOptions {\n        kotlinCompilerExtensionVersion &quot;1.4.4&quot;\n}\n</code></pre><p>needs to sync together based on the compatibility map. After fixing the sync, I haven&rsquo;t experienced any build issues when upgrading core components for the Compose.</p>\n<p>The Android version I&rsquo;m using is</p>\n<pre tabindex=\"0\"><code>Android Studio Electric Eel | 2022.1.1 Patch 2\nBuild #AI-221.6008.13.2211.9619390, built on February 17, 2023\n</code></pre>",
+				"content_text": "This will be my first time delving into Jetpack Compose for a rewrite of our existing app. I believe I have no time to study or do a full Google code lab for this one, due to the constraints of the timeline and deadline. So I will have to go head first and rely on my > 11 years of experience.\n\n### Setup\nSo with every new Android project, I created one. Every new project from Android has been plagued by inconsistency. For example, some Groovy formats are in double quotes and single quotes.\n\n<img src=\"uploads/2023/64c77b44d2.png\" width=\"561\" height=\"183\" alt=\"\" />\n\n### Build Issues\nWhen upgrading `kotlinCompilerExtensionVersion`, I encountered build issues as expected. It turns out I need to sync it with the latest Kotlin version too, based on this [compatibility map](https://developer.android.com/jetpack/androidx/releases/compose-kotlin). Leaving out `compose_version\" seems to not affect the build issues. So,\n\n```\nid 'org.jetbrains.kotlin.android' version \"1.8.10\" apply false\n```` \n\nand\n\n```\ncomposeOptions {\n        kotlinCompilerExtensionVersion \"1.4.4\"\n}\n```\nneeds to sync together based on the compatibility map. After fixing the sync, I haven't experienced any build issues when upgrading core components for the Compose.\n\nThe Android version I'm using is\n```\nAndroid Studio Electric Eel | 2022.1.1 Patch 2\nBuild #AI-221.6008.13.2211.9619390, built on February 17, 2023\n```\n",
+				"date_published": "2023-03-27T12:08:34+08:00",
+				"url": "https://law.gmnz.xyz/2023/03/25/jetpack-compose-part.html",
+				"tags": ["Mobile Development","android"]
+			},
+			{
+				"id": "http://lwgmnz.micro.blog/2023/03/25/belated-happy-birthday.html",
+				"title": "Belated Happy Birthday To My Wife",
+				"content_html": "<p>After a very busy day yesterday, there was not enough time to post a greeting here.</p>\n<p>Happy birthday to the best person I have ever known and my lovely wife! I love you so much!</p>\n",
+				"content_text": "After a very busy day yesterday, there was not enough time to post a greeting here.\n\nHappy birthday to the best person I have ever known and my lovely wife! I love you so much!\n",
+				"date_published": "2023-03-25T11:49:22+08:00",
+				"url": "https://law.gmnz.xyz/2023/03/25/belated-happy-birthday.html"
+			},
+			{
 				"id": "http://lwgmnz.micro.blog/2023/03/09/google-io.html",
 				"title": "Google I/O 2023",
 				"content_html": "<p>It&rsquo;s that time of the year. I&rsquo;m surprised that Google announced the event this early.</p>\n<!-- raw HTML omitted -->\n",
