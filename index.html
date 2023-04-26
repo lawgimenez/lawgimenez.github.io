@@ -24,6 +24,194 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2023/04/25/chess-milestone.html">Chess Milestone</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/04/25/chess-milestone.html" class="u-url"><time class="dt-published" datetime="2023-04-26 10:44:12 &#43;0800">Apr 26, 2023</time></a>
+
+		<div class="e-content">
+			 <p>I achieved a very rare milestone last night. I had a 10-game winning streak in a &ldquo;Champions&rdquo; Division. I am not entirely privy to the division but I am pretty sure this is not a beginner&rsquo;s division.</p>
+<p>My new routine for the past several months is to play a couple of chess games before going to sleep or after putting our son to sleep at night.</p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://law.gmnz.xyz/2023/04/24/xylophone-app.html">Xylophone App</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/04/24/xylophone-app.html" class="u-url"><time class="dt-published" datetime="2023-04-24 18:38:55 &#43;0800">Apr 24, 2023</time></a>
+
+		<div class="e-content">
+			 <p>In roughly an hour or two, I created an iOS app for our son who loves playing his Xylophone. I came upon this <a href="https://github.com/appbrewery/Xylophone-iOS13-Completed">old repo</a> for inspiration and reference. This was still developed using Storyboard and UIKit. So, I set out to write my own using SwiftUI.</p>
+<p>I also borrowed their sound files. The owner of these files belongs to them.</p>
+<p>The code looks like this initially.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span>
+<span style="color:#75715e">//  PlayerView.swift</span>
+<span style="color:#75715e">//  Xylo</span>
+<span style="color:#75715e">//</span>
+<span style="color:#75715e">//  Created by Lawrence Gimenez on 4/23/23.</span>
+<span style="color:#75715e">//</span>
+
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">AVFoundation</span>
+
+<span style="color:#66d9ef">var</span> audioPlayer: AVAudioPlayer!
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">PlayerView</span>: View {
+    
+    <span style="color:#66d9ef">var</span> body: some View {
+        VStack {
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;C&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;C&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.red)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;D&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;D&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.orange)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;E&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;E&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.yellow)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;F&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;F&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.green)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;G&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;G&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.teal)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;A&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;A&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.indigo)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;B&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;B&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.purple)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;C&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;C&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.red)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">play</span>(sound: String) {
+        <span style="color:#66d9ef">let</span> _ = print(<span style="color:#e6db74">&#34;Play </span><span style="color:#e6db74">\(</span>sound<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">let</span> url = Bundle.main.url(forResource: sound, withExtension: <span style="color:#e6db74">&#34;.wav&#34;</span>)
+        audioPlayer = <span style="color:#66d9ef">try</span>! AVAudioPlayer(contentsOf: url!)
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">PlayerView_Previews</span>: PreviewProvider {
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> previews: some View {
+        PlayerView()
+    }
+}
+
+</code></pre></div><p>And here&rsquo;s what it looks like on the device.</p>
+<!-- raw HTML omitted -->
+<p>If you notice, the code is so long and redundant. We can do better. Let&rsquo;s refactor our code by creating a model class so we can use it inside a loop.</p>
+<h3 id="refactor-time">Refactor Time</h3>
+<p>Let&rsquo;s create a Key model. I imported SwiftUI since I need the Color class.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Key</span>: Identifiable {
+    
+    <span style="color:#66d9ef">var</span> id: Int
+    <span style="color:#66d9ef">var</span> note: String
+    <span style="color:#66d9ef">var</span> color: Color
+}
+</code></pre></div><p>Go back to our <code>PlayerView</code> class and let&rsquo;s create an array based on the Key model.</p>
+<pre tabindex="0"><code>private var arrayKeys = [
+        Key(id: 0, note: &quot;C&quot;, color: Color.red),
+        Key(id: 1, note: &quot;D&quot;, color: Color.orange),
+        Key(id: 2, note: &quot;E&quot;, color: Color.yellow),
+        Key(id: 3, note: &quot;F&quot;, color: Color.green),
+        Key(id: 4, note: &quot;G&quot;, color: Color.teal),
+        Key(id: 5, note: &quot;A&quot;, color: Color.indigo),
+        Key(id: 6, note: &quot;B&quot;, color: Color.purple),
+        Key(id: 7, note: &quot;C&quot;, color: Color.red)
+]
+</code></pre><p>Let&rsquo;s update our body based on our newly created array.</p>
+<pre tabindex="0"><code>var body: some View {
+        VStack {
+            ForEach(arrayKeys) { key in
+                Button(action: {
+                    play(sound: key.note)
+                }) {
+                    Text(key.note)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, minHeight: 90)
+                }
+                .background(key.color)
+            }
+        }
+       .frame(maxWidth: .infinity, maxHeight: .infinity)
+}
+</code></pre><p>Much better. Code is now shorter, if I want to add another key, I would just add another Key object to our array.</p>
+<p>You can check the <a href="https://github.com/lawgimenez/xylo">whole source code here</a>. The project is compiled using the latest Xcode 14.3.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://law.gmnz.xyz/2023/04/20/fedora.html">Fedora 38 Released</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/04/20/fedora.html" class="u-url"><time class="dt-published" datetime="2023-04-20 21:01:46 &#43;0800">Apr 20, 2023</time></a>
+
+		<div class="e-content">
+			 <p>Just installed <a href="https://fedoramagazine.org/announcing-fedora-38/">Fedora 38</a>. So far, no issues found.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The default wallpaper sucks though.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2023/04/19/sound-of-metal.html">Sound of Metal Movie</a></h1>
 		
 
