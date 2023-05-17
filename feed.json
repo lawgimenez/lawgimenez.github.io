@@ -7,6 +7,24 @@
 	"items": [
 		
 			{
+				"id": "http://lwgmnz.micro.blog/2023/05/12/swiftui-tap-anywhere.html",
+				"title": "SwiftUI Tap Anywhere",
+				"content_html": "<p>Today I learned how to implement tap anywhere to dismiss the keyboard on SwiftUI.</p>\n<p>In your parent stack, either <code>VStack</code> or <code>HStack</code>, add the following code.</p>\n<pre tabindex=\"0\"><code>.contentShape(Rectangle())\n.onTapGesture {\n     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)\n}\n</code></pre><p>The most important thing to take note here is the contentShape modifier or tap gesture will not work.</p>\n",
+				"content_text": "Today I learned how to implement tap anywhere to dismiss the keyboard on SwiftUI.\n\nIn your parent stack, either `VStack` or `HStack`, add the following code.\n\n```\n.contentShape(Rectangle())\n.onTapGesture {\n     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)\n}\n```\n\nThe most important thing to take note here is the contentShape modifier or tap gesture will not work.\n",
+				"date_published": "2023-05-12T10:19:12+08:00",
+				"url": "https://law.gmnz.xyz/2023/05/12/swiftui-tap-anywhere.html",
+				"tags": ["ios","Mobile Development","Swift"]
+			},
+			{
+				"id": "http://lwgmnz.micro.blog/2023/05/10/youtube-coding.html",
+				"title": "YouTube Coding",
+				"content_html": "<p>3 days ago I uploaded on YouTube my coding in SwiftUI, working on a couple of simple bug fixes for my hobby project.</p>\n<p>My wife gave me this idea and also I remember I have some coding sessions in Loom from 2 years ago, where I did a coding demo for a client. And, looking back at those videos is really cool and nostalgic.</p>\n<p>So, I decided why not upload it on YouTube.</p>\n<!-- raw HTML omitted -->\n",
+				"content_text": "3 days ago I uploaded on YouTube my coding in SwiftUI, working on a couple of simple bug fixes for my hobby project.\n\nMy wife gave me this idea and also I remember I have some coding sessions in Loom from 2 years ago, where I did a coding demo for a client. And, looking back at those videos is really cool and nostalgic.\n\nSo, I decided why not upload it on YouTube.\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/5cn09JumclA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>\n",
+				"date_published": "2023-05-10T08:23:53+08:00",
+				"url": "https://law.gmnz.xyz/2023/05/10/youtube-coding.html",
+				"tags": ["ios","Mobile Development"]
+			},
+			{
 				"id": "http://lwgmnz.micro.blog/2023/04/25/chess-milestone.html",
 				"title": "Chess Milestone",
 				"content_html": "<p>I achieved a very rare milestone last night. I had a 10-game winning streak in a &ldquo;Champions&rdquo; Division. I am not entirely privy to the division but I am pretty sure this is not a beginner&rsquo;s division.</p>\n<!-- raw HTML omitted -->\n<p>My new routine for the past several months is to play a couple of chess games before going to sleep or after putting our son to sleep at night.</p>\n<p>And I am also currently no. 1 as of last night.</p>\n<!-- raw HTML omitted -->\n",
