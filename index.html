@@ -24,6 +24,41 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2023/05/12/swiftui-tap-anywhere.html">SwiftUI Tap Anywhere</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/05/12/swiftui-tap-anywhere.html" class="u-url"><time class="dt-published" datetime="2023-05-12 10:19:12 &#43;0800">May 12, 2023</time></a>
+
+		<div class="e-content">
+			 <p>Today I learned how to implement tap anywhere to dismiss the keyboard on SwiftUI.</p>
+<p>In your parent stack, either <code>VStack</code> or <code>HStack</code>, add the following code.</p>
+<pre tabindex="0"><code>.contentShape(Rectangle())
+.onTapGesture {
+     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+}
+</code></pre><p>The most important thing to take note here is the contentShape modifier or tap gesture will not work.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://law.gmnz.xyz/2023/05/10/youtube-coding.html">YouTube Coding</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/05/10/youtube-coding.html" class="u-url"><time class="dt-published" datetime="2023-05-10 08:23:53 &#43;0800">May 10, 2023</time></a>
+
+		<div class="e-content">
+			 <p>3 days ago I uploaded on YouTube my coding in SwiftUI, working on a couple of simple bug fixes for my hobby project.</p>
+<p>My wife gave me this idea and also I remember I have some coding sessions in Loom from 2 years ago, where I did a coding demo for a client. And, looking back at those videos is really cool and nostalgic.</p>
+<p>So, I decided why not upload it on YouTube.</p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2023/04/25/chess-milestone.html">Chess Milestone</a></h1>
 		
 
