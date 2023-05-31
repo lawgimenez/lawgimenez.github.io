@@ -24,6 +24,25 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2023/05/23/dsym-workaround-in.html">dSYM workaround in Xcode 14</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/05/23/dsym-workaround-in.html" class="u-url"><time class="dt-published" datetime="2023-05-23 08:59:55 &#43;0800">May 23, 2023</time></a>
+
+		<div class="e-content">
+			 <p>Starting with Xcode 14, <a href="https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes#Deprecations">Bitcode has been deprecated</a>. So, in our team&rsquo;s case, it is impossible to download dSYM files for debugging crash logs. If you are using Crashlytics or Bugsnag, this is a requirement to make sense of the received crash logs from iOS.</p>
+<p>But there is a workaround. Previously, all you have to do was go to App Store Connect and download the dSYMs directly from there. But that option is not available anymore.</p>
+<p>But there is a workaround.</p>
+<h3 id="workaround">Workaround</h3>
+<p>Open the Window organizer in your Xcode and go to the Archive option and right-click on a particular build. Then, select Show in Finder option.</p>
+<!-- raw HTML omitted -->
+<p>You will see files with <code>.xcarchive</code> extensions. Right-click on one of those and select Show Package Contents. There you will see a dSYMs folder. It should contain the dSYMs file needed for your debugging.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2023/05/18/underwhelming-google-io.html">Underwhelming Google I/O 2023</a></h1>
 		
 
