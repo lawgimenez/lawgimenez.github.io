@@ -24,6 +24,125 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2023/07/08/lastfm-api.html">Last.fm API</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/07/08/lastfm-api.html" class="u-url"><time class="dt-published" datetime="2023-07-09 09:35:26 &#43;0800">Jul 9, 2023</time></a>
+
+		<div class="e-content">
+			 <p>At the start of the year, I recently revived my Last.fm account, which was one of the top music services before Spotify or streaming in general. It says my account has been around since 2010, thus the cringy username <a href="https://www.last.fm/user/xthekingisdeadx"><code>xthekingisdeadx</code></a>. My profile picture and username still stay the same.</p>
+<p>I want to retrieve my Last.fm data, particularly from my top artists and albums I have listened to for the past week or month. So I could share it somewhere.</p>
+<p>I am going to write my script using Go. I started this project in Python but encountered a couple of errors and I am just not in the mood to debug or solve them. Weekend projects should be fun, no?</p>
+<h4 id="get-data">GET data</h4>
+<pre tabindex="0"><code>
+package main
+
+import &quot;fmt&quot;
+import &quot;net/http&quot;
+
+func main() {
+    response, error := http.Get(&quot;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&quot;)
+    if error != nil {
+
+    }
+    defer response.Body.Close()
+    body, error := ioutil.ReadAll(response.Body)
+    fmt.Println(string(body))
+}
+
+</code></pre><p>So far so good, script compiled. Now I can retrieve the data, but no parsing yet. Time to Google, &ldquo;golang parse JSON&rdquo;.</p>
+<h4 id="json-parsing">JSON parsing</h4>
+<pre tabindex="0"><code>
+package main
+
+import &quot;fmt&quot;
+import &quot;net/http&quot;
+import &quot;io/ioutil&quot;
+import &quot;encoding/json&quot;
+
+func main() {
+    response, error := http.Get(&quot;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&quot;)
+    if error != nil {
+
+    }
+    defer response.Body.Close()
+    body, error := ioutil.ReadAll(response.Body)
+    // fmt.Println(string(body))
+
+    var jsonResponse Response
+    json.Unmarshal(body, &amp;jsonResponse)
+
+    var albums = jsonResponse.TopAlbums.Album
+    for _, album := range albums {
+        fmt.Println(album.Artist.Name, &quot;:&quot;, album.PlayCount)
+    }
+}
+
+type Response struct {
+    TopAlbums TopAlbums `json:&quot;topalbums&quot;`
+}
+
+type TopAlbums struct {
+    Album []Album `json:album`
+}
+
+type Album struct {
+    Artist Artist `json:&quot;artist&quot;`
+    Image []Image `json:&quot;image&quot;`
+    PlayCount string
+}
+
+type Artist struct {
+    ArtistUrl string `json:&quot;url&quot;`
+    Name string
+}
+
+type Image struct {
+    Size string `json:&quot;size&quot;`
+    Text string `json:&quot;#text&quot;`
+}
+
+</code></pre><h4 id="gui-toolkit">GUI Toolkit</h4>
+<p>Since I only have very minimal experience with the Go language, I am not sure what my next steps are. Either, I will go with the GUI toolkit route or image manipulation.</p>
+<h4 id="switching-to-swiftui">Switching to SwiftUI</h4>
+<p>After researching Go UI frameworks, I eventually decided to use what I am currently familiar and, that is SwiftUI. Another reason is the sad state of native UI frameworks using the Go language because it seems they aren&rsquo;t many options available. I don&rsquo;t want to use cross-platforms or UI frameworks using web technologies for this is just a simple project.</p>
+<h4 id="one-hour-later">One hour later</h4>
+<p>Using <code>LazyHGrid</code>, this is what it looks like now.</p>
+<!-- raw HTML omitted -->
+<h4 id="next">Next</h4>
+<p>My next steps would be to be able to export this whole <code>View</code> into an image.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://law.gmnz.xyz/2023/07/05/wwdc.html">WWDC 2023</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/07/05/wwdc.html" class="u-url"><time class="dt-published" datetime="2023-07-05 18:42:56 &#43;0800">Jul 5, 2023</time></a>
+
+		<div class="e-content">
+			 <p>I just realized that I have not written something or anything about Apple&rsquo;s WWDC 2023. I was too busy catching up with the WWDC sessions and some fatherly stuff I have to deal with.</p>
+<p>Overall, I am impressed by the event and the news coming out of it. I just want to write down a couple of thoughts before I forget.</p>
+<h4 id="xcode-15">Xcode 15</h4>
+<p>Xcode 15 is buggy as hell. Running an emulator or preview <a href="https://developer.apple.com/forums/thread/731219">makes my machine overheat</a>. As of this writing, I am on the second beta release of Xcode 15, and still have the same overheating issue.</p>
+<h4 id="betas">Betas</h4>
+<p>I installed the beta releases right away, iOS 17 and, Sonoma. My first actually. So I ended up not being able to release new versions on Xcode 14. Luckily, we are currently rewriting the app for the upcoming version of iOS and iPadOS 17. Remind me next time not to do this shit again.</p>
+<h4 id="notes-codeblock">Notes codeblock</h4>
+<p>Notes has already the long-awaited code block feature. For me, it is a sort of a code block-ish attempt, Apple called it <code>monostyled</code>. Now my code won&rsquo;t look awkward anymore on my notes.</p>
+<h4 id="symbols-5">Symbols 5</h4>
+<p>It has been a joy to use Symbols 5 with its animations. But, I wish <code>symbolEffect()</code> will work inside <code>TabView</code>. I haven&rsquo;t yet figured out how to make it work.</p>
+<h4 id="assets-static-access">Assets static access</h4>
+<p>One of the best lowkey features of Xcode 15, I don&rsquo;t have to risk misspelling my assets while accessing them in my code.</p>
+<h4 id="others">Others</h4>
+<p>I can&rsquo;t wait to play with SwiftUI animations, SwiftData, and the not yet released TipKit. And Macros.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2023/06/14/philippines-developer-count.html">Thoughts on Stack Overflow 2023 Survey</a></h1>
 		
 
