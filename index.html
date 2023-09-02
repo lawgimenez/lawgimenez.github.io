@@ -24,6 +24,24 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2023/08/23/versionedschema-protocol-updates.html">VersionedSchema Protocol Updates</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/08/23/versionedschema-protocol-updates.html" class="u-url"><time class="dt-published" datetime="2023-08-23 23:11:35 &#43;0800">Aug 23, 2023</time></a>
+
+		<div class="e-content">
+			 <p>After updating to Xcode 15 beta 7, I got a <code>VersionedSchema</code> error saying that</p>
+<pre tabindex="0"><code>does not conform to protocol 'VersionedSchema'
+</code></pre><p>Previously, the variable <code>versionIdentifier</code> was of the type String.</p>
+<pre tabindex="0"><code>static var versionIdentifier: String = &quot;v1&quot;
+</code></pre><p>On the latest Xcode 15 beta 7, <code>versionIdentifier</code> is now of the type <code>Schema.Version</code>.</p>
+<pre tabindex="0"><code>static var versionIdentifier: Schema.Version = Schema.Version(1, 0, 0)
+</code></pre>
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2023/08/07/build-go-programs.html">Build Go programs with GitHub modules present</a></h1>
 		
 
