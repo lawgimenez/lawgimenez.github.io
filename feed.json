@@ -7,6 +7,15 @@
 	"items": [
 		
 			{
+				"id": "http://lwgmnz.micro.blog/2023/09/06/apple-vision-ready.html",
+				"title": "Apple Vision Ready",
+				"content_html": "<p>OnlineJobs app now works on <a href=\"https://developer.apple.com/visionos/\">Apple&rsquo;s visionOS</a>.</p>\n<!-- raw HTML omitted -->\n<!-- raw HTML omitted -->\n",
+				"content_text": "OnlineJobs app now works on [Apple's visionOS](https://developer.apple.com/visionos/).\n\n<img src=\"uploads/2023/simulator-screenshotapple-vision-pro2023-09-06-at-09.56.12.png\" width=\"600\" height=\"449\" alt=\"\">\n\n<img src=\"uploads/2023/simulator-screenshotapple-vision-pro2023-09-06-at-09.55.25.png\" width=\"600\" height=\"449\" alt=\"\">\n",
+				"date_published": "2023-09-06T10:37:14+08:00",
+				"url": "https://law.gmnz.xyz/2023/09/06/apple-vision-ready.html",
+				"tags": ["iOS","Mobile Development"]
+			},
+			{
 				"id": "http://lwgmnz.micro.blog/2023/08/23/versionedschema-protocol-updates.html",
 				"title": "VersionedSchema Protocol Updates",
 				"content_html": "<p>After updating to Xcode 15 beta 7, I got a <code>VersionedSchema</code> error saying that</p>\n<pre tabindex=\"0\"><code>does not conform to protocol 'VersionedSchema'\n</code></pre><p>Previously, the variable <code>versionIdentifier</code> was of the type String.</p>\n<pre tabindex=\"0\"><code>static var versionIdentifier: String = &quot;v1&quot;\n</code></pre><p>On the latest Xcode 15 beta 7, <code>versionIdentifier</code> is now of the type <code>Schema.Version</code>.</p>\n<pre tabindex=\"0\"><code>static var versionIdentifier: Schema.Version = Schema.Version(1, 0, 0)\n</code></pre>",
