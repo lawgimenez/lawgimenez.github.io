@@ -24,6 +24,60 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2023/10/01/cookcantongo.html">cook-canton.go</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/10/01/cookcantongo.html" class="u-url"><time class="dt-published" datetime="2023-10-01 11:35:43 &#43;0800">Oct 1, 2023</time></a>
+
+		<div class="e-content">
+			 <p>Found a funny reel on Facebook titled <code>From Coder to Cooker</code>. The person was cooking pancit canton with the help of codes. You can watch it <a href="https://www.facebook.com/reel/3573374636244292">here</a>.</p>
+<p>I believe he was using C# on this one. Anyway, here&rsquo;s my version in <a href="https://go.dev/">Go language</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (<span style="color:#e6db74">&#34;fmt&#34;</span>; 	<span style="color:#e6db74">&#34;time&#34;</span>)
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">boilingWaterDone</span>, <span style="color:#a6e22e">waterIsBoiling</span> = <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Step</span> <span style="color:#66d9ef">int</span>
+<span style="color:#66d9ef">const</span> (<span style="color:#a6e22e">Boil</span> <span style="color:#a6e22e">Step</span> = <span style="color:#66d9ef">iota</span>; <span style="color:#a6e22e">CookNoodles</span>; <span style="color:#a6e22e">DrainWater</span>; <span style="color:#a6e22e">MixSeasoning</span>; <span style="color:#a6e22e">MixWell</span>)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">for</span> {
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">Boil</span>)
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">boilingWaterDone</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span> {
+			<span style="color:#a6e22e">waterIsBoiling</span> = <span style="color:#66d9ef">true</span>
+			<span style="color:#66d9ef">break</span>
+		}
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">waterIsBoiling</span> {
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">CookNoodles</span>)
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">DrainWater</span>)
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">MixSeasoning</span>)
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">MixWell</span>)
+	}
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">step</span> <span style="color:#a6e22e">Step</span>) {
+	<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">step</span> {
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Boil</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Boiling water...&#34;</span>)
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">CookNoodles</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Cooking noodles...&#34;</span>)
+		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Minute</span>) <span style="color:#75715e">// Cook noodles for 5 minutes
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">DrainWater</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Drain water...&#34;</span>)
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">MixSeasoning</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Mix seasoning...&#34;</span>)
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">MixWell</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Mix well...&#34;</span>)
+	}
+}
+</code></pre></div>
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2023/09/06/apple-vision-ready.html">Apple Vision Ready</a></h1>
 		
 
