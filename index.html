@@ -252,75 +252,75 @@ sudo restorecon -R /home/lwgmnz/share
 <p>I want to retrieve my Last.fm data, particularly from my top artists and albums I have listened to for the past week or month. So I could share it somewhere.</p>
 <p>I am going to write my script using Go. I started this project in Python but encountered a couple of errors and I am just not in the mood to debug or solve them. Weekend projects should be fun, no?</p>
 <h4 id="get-data">GET data</h4>
-<pre tabindex="0"><code>
-package main
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-import &quot;fmt&quot;
-import &quot;net/http&quot;
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;net/http&#34;</span>
 
-func main() {
-    response, error := http.Get(&quot;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&quot;)
-    if error != nil {
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">response</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&#34;</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">error</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 
     }
-    defer response.Body.Close()
-    body, error := ioutil.ReadAll(response.Body)
-    fmt.Println(string(body))
+    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+    <span style="color:#a6e22e">body</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(string(<span style="color:#a6e22e">body</span>))
 }
 
-</code></pre><p>So far so good, script compiled. Now I can retrieve the data, but no parsing yet. Time to Google, &ldquo;golang parse JSON&rdquo;.</p>
+</code></pre></div><p>So far so good, script compiled. Now I can retrieve the data, but no parsing yet. Time to Google, &ldquo;golang parse JSON&rdquo;.</p>
 <h4 id="json-parsing">JSON parsing</h4>
-<pre tabindex="0"><code>
-package main
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-import &quot;fmt&quot;
-import &quot;net/http&quot;
-import &quot;io/ioutil&quot;
-import &quot;encoding/json&quot;
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;net/http&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;io/ioutil&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;encoding/json&#34;</span>
 
-func main() {
-    response, error := http.Get(&quot;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&quot;)
-    if error != nil {
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">response</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&#34;</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">error</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 
     }
-    defer response.Body.Close()
-    body, error := ioutil.ReadAll(response.Body)
-    // fmt.Println(string(body))
+    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+    <span style="color:#a6e22e">body</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>)
+    <span style="color:#75715e">// fmt.Println(string(body))
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">jsonResponse</span> <span style="color:#a6e22e">Response</span>
+    <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#a6e22e">body</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">jsonResponse</span>)
 
-    var jsonResponse Response
-    json.Unmarshal(body, &amp;jsonResponse)
-
-    var albums = jsonResponse.TopAlbums.Album
-    for _, album := range albums {
-        fmt.Println(album.Artist.Name, &quot;:&quot;, album.PlayCount)
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">albums</span> = <span style="color:#a6e22e">jsonResponse</span>.<span style="color:#a6e22e">TopAlbums</span>.<span style="color:#a6e22e">Album</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">album</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">albums</span> {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">album</span>.<span style="color:#a6e22e">Artist</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;:&#34;</span>, <span style="color:#a6e22e">album</span>.<span style="color:#a6e22e">PlayCount</span>)
     }
 }
 
-type Response struct {
-    TopAlbums TopAlbums `json:&quot;topalbums&quot;`
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Response</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">TopAlbums</span> <span style="color:#a6e22e">TopAlbums</span> <span style="color:#e6db74">`json:&#34;topalbums&#34;`</span>
 }
 
-type TopAlbums struct {
-    Album []Album `json:album`
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">TopAlbums</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Album</span> []<span style="color:#a6e22e">Album</span> <span style="color:#e6db74">`json:album`</span>
 }
 
-type Album struct {
-    Artist Artist `json:&quot;artist&quot;`
-    Image []Image `json:&quot;image&quot;`
-    PlayCount string
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Album</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Artist</span> <span style="color:#a6e22e">Artist</span> <span style="color:#e6db74">`json:&#34;artist&#34;`</span>
+    <span style="color:#a6e22e">Image</span> []<span style="color:#a6e22e">Image</span> <span style="color:#e6db74">`json:&#34;image&#34;`</span>
+    <span style="color:#a6e22e">PlayCount</span> <span style="color:#66d9ef">string</span>
 }
 
-type Artist struct {
-    ArtistUrl string `json:&quot;url&quot;`
-    Name string
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Artist</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">ArtistUrl</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;url&#34;`</span>
+    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
 }
 
-type Image struct {
-    Size string `json:&quot;size&quot;`
-    Text string `json:&quot;#text&quot;`
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Image</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Size</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;size&#34;`</span>
+    <span style="color:#a6e22e">Text</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;#text&#34;`</span>
 }
 
-</code></pre><h4 id="gui-toolkit">GUI Toolkit</h4>
+</code></pre></div><h4 id="gui-toolkit">GUI Toolkit</h4>
 <p>Since I only have very minimal experience with the Go language, I am not sure what my next steps are. Either, I will go with the GUI toolkit route or image manipulation.</p>
 <h4 id="switching-to-swiftui">Switching to SwiftUI</h4>
 <p>After researching Go UI frameworks, I eventually decided to use what I am currently familiar and, that is SwiftUI. Another reason is the sad state of native UI frameworks using the Go language because it seems they aren&rsquo;t many options available. I don&rsquo;t want to use cross-platforms or UI frameworks using web technologies for this is just a simple project.</p>
