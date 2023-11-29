@@ -2,7 +2,7 @@
 <html>
 
   <head>
-	<meta name="generator" content="Hugo 0.117.0">
+	<meta name="generator" content="Hugo 0.91.2" />
 
   <title>
       
@@ -24,6 +24,20 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2023/11/13/fedora.html">Fedora 39</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2023/11/13/fedora.html" class="u-url"><time class="dt-published" datetime="2023-11-13 16:47:00 &#43;0800">Nov 13, 2023</time></a>
+
+		<div class="e-content">
+			 <p>Updated my ThinkPad T480 to Fedora 39 today.</p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2023/10/01/cookcantongo.html">cook-canton.go</a></h1>
 		
 
@@ -32,47 +46,47 @@
 		<div class="e-content">
 			 <p>Found a funny reel on Facebook titled <code>From Coder to Cooker</code>. The person was cooking pancit canton with the help of codes. You can watch it <a href="https://www.facebook.com/reel/3573374636244292">here</a>.</p>
 <p>I believe he was using C# on this one. Anyway, here&rsquo;s my version in <a href="https://go.dev/">Go language</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (<span style="color:#e6db74">&#34;fmt&#34;</span>; 	<span style="color:#e6db74">&#34;time&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">boilingWaterDone</span>, <span style="color:#a6e22e">waterIsBoiling</span> = <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Step</span> <span style="color:#66d9ef">int</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> (<span style="color:#a6e22e">Boil</span> <span style="color:#a6e22e">Step</span> = <span style="color:#66d9ef">iota</span>; <span style="color:#a6e22e">CookNoodles</span>; <span style="color:#a6e22e">DrainWater</span>; <span style="color:#a6e22e">MixSeasoning</span>; <span style="color:#a6e22e">MixWell</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">Boil</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">boilingWaterDone</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span> {
-</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">waterIsBoiling</span> = <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">waterIsBoiling</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">CookNoodles</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">DrainWater</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">MixSeasoning</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">MixWell</span>)
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">step</span> <span style="color:#a6e22e">Step</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">step</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Boil</span>:
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Boiling water...&#34;</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">CookNoodles</span>:
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Cooking noodles...&#34;</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Minute</span>) <span style="color:#75715e">// Cook noodles for 5 minutes
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">DrainWater</span>:
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Drain water...&#34;</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">MixSeasoning</span>:
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Mix seasoning...&#34;</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">MixWell</span>:
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Mix well...&#34;</span>)
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (<span style="color:#e6db74">&#34;fmt&#34;</span>; 	<span style="color:#e6db74">&#34;time&#34;</span>)
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">boilingWaterDone</span>, <span style="color:#a6e22e">waterIsBoiling</span> = <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Step</span> <span style="color:#66d9ef">int</span>
+<span style="color:#66d9ef">const</span> (<span style="color:#a6e22e">Boil</span> <span style="color:#a6e22e">Step</span> = <span style="color:#66d9ef">iota</span>; <span style="color:#a6e22e">CookNoodles</span>; <span style="color:#a6e22e">DrainWater</span>; <span style="color:#a6e22e">MixSeasoning</span>; <span style="color:#a6e22e">MixWell</span>)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">for</span> {
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">Boil</span>)
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">boilingWaterDone</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span> {
+			<span style="color:#a6e22e">waterIsBoiling</span> = <span style="color:#66d9ef">true</span>
+			<span style="color:#66d9ef">break</span>
+		}
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">waterIsBoiling</span> {
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">CookNoodles</span>)
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">DrainWater</span>)
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">MixSeasoning</span>)
+		<span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">MixWell</span>)
+	}
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">runStep</span>(<span style="color:#a6e22e">step</span> <span style="color:#a6e22e">Step</span>) {
+	<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">step</span> {
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Boil</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Boiling water...&#34;</span>)
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">CookNoodles</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Cooking noodles...&#34;</span>)
+		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Minute</span>) <span style="color:#75715e">// Cook noodles for 5 minutes
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">DrainWater</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Drain water...&#34;</span>)
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">MixSeasoning</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Mix seasoning...&#34;</span>)
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">MixWell</span>:
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Mix well...&#34;</span>)
+	}
+}
+</code></pre></div>
 		</div>
 	  </div>
 	
@@ -100,9 +114,9 @@
 
 		<div class="e-content">
 			 <p>After updating to Xcode 15 beta 7, I got a <code>VersionedSchema</code> error saying that</p>
-<pre tabindex="0"><code>does not conform to protocol &#39;VersionedSchema&#39;
+<pre tabindex="0"><code>does not conform to protocol 'VersionedSchema'
 </code></pre><p>Previously, the variable <code>versionIdentifier</code> was of the type String.</p>
-<pre tabindex="0"><code>static var versionIdentifier: String = &#34;v1&#34;
+<pre tabindex="0"><code>static var versionIdentifier: String = &quot;v1&quot;
 </code></pre><p>On the latest Xcode 15 beta 7, <code>versionIdentifier</code> is now of the type <code>Schema.Version</code>.</p>
 <pre tabindex="0"><code>static var versionIdentifier: Schema.Version = Schema.Version(1, 0, 0)
 </code></pre>
@@ -118,22 +132,22 @@
 
 		<div class="e-content">
 			 <p>I was hit with an error when I try to run a Go script, <code>go run somescript.go</code>. This is a note to my future self, in case I totally forgot.</p>
-<pre tabindex="0"><code>no required module provides package github.com/gofrs/uuid: go.mod file not found in current directory or any parent directory; see &#39;go help modules&#39;
+<pre tabindex="0"><code>no required module provides package github.com/gofrs/uuid: go.mod file not found in current directory or any parent directory; see 'go help modules'
 </code></pre><p>I need to run the command below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">go</span> <span style="color:#a6e22e">mod</span> <span style="color:#a6e22e">init</span> <span style="color:#a6e22e">somescript</span>.<span style="color:#66d9ef">go</span>
-</span></span></code></pre></div><p>Then it will output the following lines.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">creating</span> <span style="color:#a6e22e">new</span> <span style="color:#66d9ef">go</span>.<span style="color:#a6e22e">mod</span>: <span style="color:#a6e22e">module</span> <span style="color:#a6e22e">somescript</span>.<span style="color:#66d9ef">go</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">add</span> <span style="color:#a6e22e">module</span> <span style="color:#a6e22e">requirements</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">sums</span>:
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">mod</span> <span style="color:#a6e22e">tidy</span>
-</span></span></code></pre></div><p>Then run mod tidy.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">go</span> <span style="color:#a6e22e">mod</span> <span style="color:#a6e22e">init</span> <span style="color:#a6e22e">somescript</span>.<span style="color:#66d9ef">go</span>
+</code></pre></div><p>Then it will output the following lines.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">creating</span> <span style="color:#a6e22e">new</span> <span style="color:#66d9ef">go</span>.<span style="color:#a6e22e">mod</span>: <span style="color:#a6e22e">module</span> <span style="color:#a6e22e">somescript</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">add</span> <span style="color:#a6e22e">module</span> <span style="color:#a6e22e">requirements</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">sums</span>:
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">mod</span> <span style="color:#a6e22e">tidy</span>
+</code></pre></div><p>Then run mod tidy.</p>
 <pre tabindex="0"><code>go mod tidy
 </code></pre><p>And the output will be.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">finding</span> <span style="color:#a6e22e">module</span> <span style="color:#66d9ef">for</span> <span style="color:#f92672">package</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">downloading</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span> <span style="color:#a6e22e">v4</span><span style="color:#ae81ff">.4.0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">incompatible</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">found</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span> <span style="color:#a6e22e">in</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span> <span style="color:#a6e22e">v4</span><span style="color:#ae81ff">.4.0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">incompatible</span>
-</span></span></code></pre></div><p>Then build it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">go</span> <span style="color:#a6e22e">build</span> <span style="color:#a6e22e">somescript</span>.<span style="color:#66d9ef">go</span>
-</span></span></code></pre></div><p>It will create the following files</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">finding</span> <span style="color:#a6e22e">module</span> <span style="color:#66d9ef">for</span> <span style="color:#f92672">package</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span>
+<span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">downloading</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span> <span style="color:#a6e22e">v4</span><span style="color:#ae81ff">.4.0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">incompatible</span>
+<span style="color:#66d9ef">go</span>: <span style="color:#a6e22e">found</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span> <span style="color:#a6e22e">in</span> <span style="color:#a6e22e">github</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">gofrs</span><span style="color:#f92672">/</span><span style="color:#a6e22e">uuid</span> <span style="color:#a6e22e">v4</span><span style="color:#ae81ff">.4.0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">incompatible</span>
+</code></pre></div><p>Then build it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">go</span> <span style="color:#a6e22e">build</span> <span style="color:#a6e22e">somescript</span>.<span style="color:#66d9ef">go</span>
+</code></pre></div><p>It will create the following files</p>
 <pre tabindex="0"><code>ls
 go.mod		go.sum		somescript	 somescript.go
 </code></pre><p>Run the compiled script.</p>
@@ -204,35 +218,35 @@ go.mod		go.sum		somescript	 somescript.go
 			 <p>Note: The OS versions I used here are macOS Sonoma 14 Beta 3 and Fedora Workstation 38.</p>
 <p>On the first try, I was supposed to enable file sharing from macOS and access it on my Fedora machine. But Apple&rsquo;s Samba did not work. So, I tried the opposite instead.</p>
 <h4 id="install-and-setup-samba-on-fedora">Install and Setup Samba on Fedora</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install samba
-</span></span><span style="display:flex;"><span>sudo systemctl enable smb --now
-</span></span><span style="display:flex;"><span>firewall-cmd --get-active-zones
-</span></span><span style="display:flex;"><span>sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>FedoraWorkstation --add-service<span style="color:#f92672">=</span>samba
-</span></span><span style="display:flex;"><span>sudo firewall-cmd --reload
-</span></span></code></pre></div><p>Make sure the user already exists in fedora, in my case lwgmnz@fedora.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo smbpasswd -a lwgmnz
-</span></span></code></pre></div><p>Create the shared folder.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /home/lwgmnz/share
-</span></span><span style="display:flex;"><span>sudo semanage fcontext --add --type <span style="color:#e6db74">&#34;samba_share_t&#34;</span> <span style="color:#e6db74">&#34;/home/lwgmnz/share(/.*)?&#34;</span>
-</span></span><span style="display:flex;"><span>sudo restorecon -R /home/lwgmnz/share
-</span></span></code></pre></div><p>Open <code>smb.conf</code> and add the values below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/samba/smb.conf
-</span></span></code></pre></div><p>Add the following settings at the end of the file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>[<span style="color:#a6e22e">share</span>]<span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">comment</span> = <span style="color:#a6e22e">My</span> <span style="color:#a6e22e">Share</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">path</span> = <span style="color:#e6db74">/home/</span><span style="color:#a6e22e">lwgmnz</span>/<span style="color:#a6e22e">share</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">writeable</span> = <span style="color:#a6e22e">yes</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">browseable</span> = <span style="color:#a6e22e">yes</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">public</span> = <span style="color:#a6e22e">yes</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">mask</span> = <span style="color:#ae81ff">0644</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">directory</span> <span style="color:#a6e22e">mask</span> = <span style="color:#ae81ff">0755</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">write</span> <span style="color:#a6e22e">list</span> = <span style="color:#a6e22e">user</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span></code></pre></div><p>Restart Samba.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart smb
-</span></span></code></pre></div><h4 id="access-time">Access time</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dnf install samba
+sudo systemctl enable smb --now
+firewall-cmd --get-active-zones
+sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>FedoraWorkstation --add-service<span style="color:#f92672">=</span>samba
+sudo firewall-cmd --reload
+</code></pre></div><p>Make sure the user already exists in fedora, in my case lwgmnz@fedora.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo smbpasswd -a lwgmnz
+</code></pre></div><p>Create the shared folder.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /home/lwgmnz/share
+sudo semanage fcontext --add --type <span style="color:#e6db74">&#34;samba_share_t&#34;</span> <span style="color:#e6db74">&#34;/home/lwgmnz/share(/.*)?&#34;</span>
+sudo restorecon -R /home/lwgmnz/share
+</code></pre></div><p>Open <code>smb.conf</code> and add the values below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/samba/smb.conf
+</code></pre></div><p>Add the following settings at the end of the file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">[<span style="color:#a6e22e">share</span>]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">comment</span> = <span style="color:#a6e22e">My</span> <span style="color:#a6e22e">Share</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">path</span> = <span style="color:#e6db74">/home/</span><span style="color:#a6e22e">lwgmnz</span>/<span style="color:#a6e22e">share</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">writeable</span> = <span style="color:#a6e22e">yes</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">browseable</span> = <span style="color:#a6e22e">yes</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">public</span> = <span style="color:#a6e22e">yes</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">mask</span> = <span style="color:#ae81ff">0644</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">directory</span> <span style="color:#a6e22e">mask</span> = <span style="color:#ae81ff">0755</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>        <span style="color:#a6e22e">write</span> <span style="color:#a6e22e">list</span> = <span style="color:#a6e22e">user</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Restart Samba.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl restart smb
+</code></pre></div><h4 id="access-time">Access time</h4>
 <p>Get Linux&rsquo;s local IP address, in my case it is 192.168.0.112</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ifconfig -a
-</span></span></code></pre></div><p>On macOS, open Finder, Go - Connect to Server and enter smb://192.168.0.112 and enter the username and password from the command line above.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ifconfig -a
+</code></pre></div><p>On macOS, open Finder, Go - Connect to Server and enter smb://192.168.0.112 and enter the username and password from the command line above.</p>
 <!-- raw HTML omitted -->
 <p>The <em>share</em> folder will now appear.</p>
 <!-- raw HTML omitted -->
@@ -252,73 +266,75 @@ go.mod		go.sum		somescript	 somescript.go
 <p>I want to retrieve my Last.fm data, particularly from my top artists and albums I have listened to for the past week or month. So I could share it somewhere.</p>
 <p>I am going to write my script using Go. I started this project in Python but encountered a couple of errors and I am just not in the mood to debug or solve them. Weekend projects should be fun, no?</p>
 <h4 id="get-data">GET data</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;net/http&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">response</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">error</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(string(<span style="color:#a6e22e">body</span>))
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>So far so good, script compiled. Now I can retrieve the data, but no parsing yet. Time to Google, &ldquo;golang parse JSON&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;net/http&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">response</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&#34;</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">error</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+
+    }
+    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+    <span style="color:#a6e22e">body</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(string(<span style="color:#a6e22e">body</span>))
+}
+
+</code></pre></div><p>So far so good, script compiled. Now I can retrieve the data, but no parsing yet. Time to Google, &ldquo;golang parse JSON&rdquo;.</p>
 <h4 id="json-parsing">JSON parsing</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;net/http&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;io/ioutil&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;encoding/json&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">response</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">error</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// fmt.Println(string(body))
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">jsonResponse</span> <span style="color:#a6e22e">Response</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#a6e22e">body</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">jsonResponse</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">albums</span> = <span style="color:#a6e22e">jsonResponse</span>.<span style="color:#a6e22e">TopAlbums</span>.<span style="color:#a6e22e">Album</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">album</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">albums</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">album</span>.<span style="color:#a6e22e">Artist</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;:&#34;</span>, <span style="color:#a6e22e">album</span>.<span style="color:#a6e22e">PlayCount</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Response</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">TopAlbums</span> <span style="color:#a6e22e">TopAlbums</span> <span style="color:#e6db74">`json:&#34;topalbums&#34;`</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">TopAlbums</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Album</span> []<span style="color:#a6e22e">Album</span> <span style="color:#e6db74">`json:album`</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Album</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Artist</span> <span style="color:#a6e22e">Artist</span> <span style="color:#e6db74">`json:&#34;artist&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Image</span> []<span style="color:#a6e22e">Image</span> <span style="color:#e6db74">`json:&#34;image&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">PlayCount</span> <span style="color:#66d9ef">string</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Artist</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ArtistUrl</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;url&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Image</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Size</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;size&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Text</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;#text&#34;`</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h4 id="gui-toolkit">GUI Toolkit</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;net/http&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;io/ioutil&#34;</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;encoding/json&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">response</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&amp;user=xthekingisdeadx&amp;api_key=[api-key-here]&amp;format=json&amp;period=7day&#34;</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">error</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+
+    }
+    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+    <span style="color:#a6e22e">body</span>, <span style="color:#66d9ef">error</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>)
+    <span style="color:#75715e">// fmt.Println(string(body))
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">jsonResponse</span> <span style="color:#a6e22e">Response</span>
+    <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#a6e22e">body</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">jsonResponse</span>)
+
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">albums</span> = <span style="color:#a6e22e">jsonResponse</span>.<span style="color:#a6e22e">TopAlbums</span>.<span style="color:#a6e22e">Album</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">album</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">albums</span> {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">album</span>.<span style="color:#a6e22e">Artist</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;:&#34;</span>, <span style="color:#a6e22e">album</span>.<span style="color:#a6e22e">PlayCount</span>)
+    }
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Response</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">TopAlbums</span> <span style="color:#a6e22e">TopAlbums</span> <span style="color:#e6db74">`json:&#34;topalbums&#34;`</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">TopAlbums</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Album</span> []<span style="color:#a6e22e">Album</span> <span style="color:#e6db74">`json:album`</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Album</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Artist</span> <span style="color:#a6e22e">Artist</span> <span style="color:#e6db74">`json:&#34;artist&#34;`</span>
+    <span style="color:#a6e22e">Image</span> []<span style="color:#a6e22e">Image</span> <span style="color:#e6db74">`json:&#34;image&#34;`</span>
+    <span style="color:#a6e22e">PlayCount</span> <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Artist</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">ArtistUrl</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;url&#34;`</span>
+    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Image</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Size</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;size&#34;`</span>
+    <span style="color:#a6e22e">Text</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;#text&#34;`</span>
+}
+
+</code></pre></div><h4 id="gui-toolkit">GUI Toolkit</h4>
 <p>Since I only have very minimal experience with the Go language, I am not sure what my next steps are. Either, I will go with the GUI toolkit route or image manipulation.</p>
 <h4 id="switching-to-swiftui">Switching to SwiftUI</h4>
 <p>After researching Go UI frameworks, I eventually decided to use what I am currently familiar and, that is SwiftUI. Another reason is the sad state of native UI frameworks using the Go language because it seems they aren&rsquo;t many options available. I don&rsquo;t want to use cross-platforms or UI frameworks using web technologies for this is just a simple project.</p>
@@ -399,7 +415,7 @@ go.mod		go.sum		somescript	 somescript.go
 
 		<div class="e-content">
 			 <p>My tiny reward from Stack Overflow arrived yesterday, a small single keycap. I won it when I answered their Saved the Day story. I did not remember when, it was a long time ago.</p>
-<p>Initially, I told them to not even bother shipping a small item overseas, the Philippines&rsquo; Customs are not worth the trouble.</p>
+<p>Initially, I told them to not even bother shipping a small item overseas, the Philippines' Customs are not worth the trouble.</p>
 <!-- raw HTML omitted -->
 <p>But they insisted. Thanks!</p>
 <!-- raw HTML omitted -->
@@ -533,127 +549,128 @@ go.mod		go.sum		somescript	 somescript.go
 			 <p>In roughly an hour or two, I created an iOS app for our son who loves playing his Xylophone. I came upon this <a href="https://github.com/appbrewery/Xylophone-iOS13-Completed">old repo</a> for inspiration and reference. This was still developed using Storyboard and UIKit. So, I set out to write my own using SwiftUI.</p>
 <p>I also borrowed their sound files. The owner of these files belongs to them.</p>
 <p>The code looks like this initially.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#75715e">//</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//  PlayerView.swift</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//  Xylo</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//  Created by Lawrence Gimenez on 4/23/23.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">AVFoundation</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> audioPlayer: AVAudioPlayer!
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">PlayerView</span>: View {
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> body: some View {
-</span></span><span style="display:flex;"><span>        VStack {
-</span></span><span style="display:flex;"><span>            Button(action: {
-</span></span><span style="display:flex;"><span>                play(sound: <span style="color:#e6db74">&#34;C&#34;</span>)
-</span></span><span style="display:flex;"><span>            }) {
-</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;C&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .foregroundColor(.white)
-</span></span><span style="display:flex;"><span>                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .background(Color.red)
-</span></span><span style="display:flex;"><span>            Button(action: {
-</span></span><span style="display:flex;"><span>                play(sound: <span style="color:#e6db74">&#34;D&#34;</span>)
-</span></span><span style="display:flex;"><span>            }) {
-</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;D&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .foregroundColor(.white)
-</span></span><span style="display:flex;"><span>                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .background(Color.orange)
-</span></span><span style="display:flex;"><span>            Button(action: {
-</span></span><span style="display:flex;"><span>                play(sound: <span style="color:#e6db74">&#34;E&#34;</span>)
-</span></span><span style="display:flex;"><span>            }) {
-</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;E&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .foregroundColor(.white)
-</span></span><span style="display:flex;"><span>                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .background(Color.yellow)
-</span></span><span style="display:flex;"><span>            Button(action: {
-</span></span><span style="display:flex;"><span>                play(sound: <span style="color:#e6db74">&#34;F&#34;</span>)
-</span></span><span style="display:flex;"><span>            }) {
-</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;F&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .foregroundColor(.white)
-</span></span><span style="display:flex;"><span>                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .background(Color.green)
-</span></span><span style="display:flex;"><span>            Button(action: {
-</span></span><span style="display:flex;"><span>                play(sound: <span style="color:#e6db74">&#34;G&#34;</span>)
-</span></span><span style="display:flex;"><span>            }) {
-</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;G&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .foregroundColor(.white)
-</span></span><span style="display:flex;"><span>                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .background(Color.teal)
-</span></span><span style="display:flex;"><span>            Button(action: {
-</span></span><span style="display:flex;"><span>                play(sound: <span style="color:#e6db74">&#34;A&#34;</span>)
-</span></span><span style="display:flex;"><span>            }) {
-</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;A&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .foregroundColor(.white)
-</span></span><span style="display:flex;"><span>                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .background(Color.indigo)
-</span></span><span style="display:flex;"><span>            Button(action: {
-</span></span><span style="display:flex;"><span>                play(sound: <span style="color:#e6db74">&#34;B&#34;</span>)
-</span></span><span style="display:flex;"><span>            }) {
-</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;B&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .foregroundColor(.white)
-</span></span><span style="display:flex;"><span>                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .background(Color.purple)
-</span></span><span style="display:flex;"><span>            Button(action: {
-</span></span><span style="display:flex;"><span>                play(sound: <span style="color:#e6db74">&#34;C&#34;</span>)
-</span></span><span style="display:flex;"><span>            }) {
-</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;C&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .foregroundColor(.white)
-</span></span><span style="display:flex;"><span>                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .background(Color.red)
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        .frame(maxWidth: .infinity, maxHeight: .infinity)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">play</span>(sound: String) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> _ = print(<span style="color:#e6db74">&#34;Play </span><span style="color:#e6db74">\(</span>sound<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> url = Bundle.main.url(forResource: sound, withExtension: <span style="color:#e6db74">&#34;.wav&#34;</span>)
-</span></span><span style="display:flex;"><span>        audioPlayer = <span style="color:#66d9ef">try</span>! AVAudioPlayer(contentsOf: url!)
-</span></span><span style="display:flex;"><span>        audioPlayer.prepareToPlay()
-</span></span><span style="display:flex;"><span>        audioPlayer.play()
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">PlayerView_Previews</span>: PreviewProvider {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> previews: some View {
-</span></span><span style="display:flex;"><span>        PlayerView()
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>And here&rsquo;s what it looks like on the device.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#75715e">//</span>
+<span style="color:#75715e">//  PlayerView.swift</span>
+<span style="color:#75715e">//  Xylo</span>
+<span style="color:#75715e">//</span>
+<span style="color:#75715e">//  Created by Lawrence Gimenez on 4/23/23.</span>
+<span style="color:#75715e">//</span>
+
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">AVFoundation</span>
+
+<span style="color:#66d9ef">var</span> audioPlayer: AVAudioPlayer!
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">PlayerView</span>: View {
+    
+    <span style="color:#66d9ef">var</span> body: some View {
+        VStack {
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;C&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;C&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.red)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;D&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;D&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.orange)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;E&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;E&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.yellow)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;F&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;F&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.green)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;G&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;G&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.teal)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;A&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;A&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.indigo)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;B&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;B&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.purple)
+            Button(action: {
+                play(sound: <span style="color:#e6db74">&#34;C&#34;</span>)
+            }) {
+                Text(<span style="color:#e6db74">&#34;C&#34;</span>)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: <span style="color:#ae81ff">90</span>)
+            }
+            .background(Color.red)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">play</span>(sound: String) {
+        <span style="color:#66d9ef">let</span> _ = print(<span style="color:#e6db74">&#34;Play </span><span style="color:#e6db74">\(</span>sound<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">let</span> url = Bundle.main.url(forResource: sound, withExtension: <span style="color:#e6db74">&#34;.wav&#34;</span>)
+        audioPlayer = <span style="color:#66d9ef">try</span>! AVAudioPlayer(contentsOf: url!)
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">PlayerView_Previews</span>: PreviewProvider {
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> previews: some View {
+        PlayerView()
+    }
+}
+
+</code></pre></div><p>And here&rsquo;s what it looks like on the device.</p>
 <!-- raw HTML omitted -->
 <p>If you notice, the code is so long and redundant. We can do better. Let&rsquo;s refactor our code by creating a model class so we can use it inside a loop.</p>
 <h3 id="refactor-time">Refactor Time</h3>
 <p>Let&rsquo;s create a Key model. I imported SwiftUI since I need the Color class.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Key</span>: Identifiable {
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> id: Int
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> note: String
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> color: Color
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Go back to our <code>PlayerView</code> class and let&rsquo;s create an array based on the Key model.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Key</span>: Identifiable {
+    
+    <span style="color:#66d9ef">var</span> id: Int
+    <span style="color:#66d9ef">var</span> note: String
+    <span style="color:#66d9ef">var</span> color: Color
+}
+</code></pre></div><p>Go back to our <code>PlayerView</code> class and let&rsquo;s create an array based on the Key model.</p>
 <pre tabindex="0"><code>private var arrayKeys = [
-        Key(id: 0, note: &#34;C&#34;, color: Color.red),
-        Key(id: 1, note: &#34;D&#34;, color: Color.orange),
-        Key(id: 2, note: &#34;E&#34;, color: Color.yellow),
-        Key(id: 3, note: &#34;F&#34;, color: Color.green),
-        Key(id: 4, note: &#34;G&#34;, color: Color.teal),
-        Key(id: 5, note: &#34;A&#34;, color: Color.indigo),
-        Key(id: 6, note: &#34;B&#34;, color: Color.purple),
-        Key(id: 7, note: &#34;C&#34;, color: Color.red)
+        Key(id: 0, note: &quot;C&quot;, color: Color.red),
+        Key(id: 1, note: &quot;D&quot;, color: Color.orange),
+        Key(id: 2, note: &quot;E&quot;, color: Color.yellow),
+        Key(id: 3, note: &quot;F&quot;, color: Color.green),
+        Key(id: 4, note: &quot;G&quot;, color: Color.teal),
+        Key(id: 5, note: &quot;A&quot;, color: Color.indigo),
+        Key(id: 6, note: &quot;B&quot;, color: Color.purple),
+        Key(id: 7, note: &quot;C&quot;, color: Color.red)
 ]
 </code></pre><p>Let&rsquo;s update our body based on our newly created array.</p>
 <pre tabindex="0"><code>var body: some View {
@@ -772,10 +789,10 @@ go.mod		go.sum		somescript	 somescript.go
 <!-- raw HTML omitted -->
 <h3 id="build-issues">Build Issues</h3>
 <p>When upgrading <code>kotlinCompilerExtensionVersion</code>, I encountered build issues as expected. It turns out I need to sync it with the latest Kotlin version too, based on this <a href="https://developer.android.com/jetpack/androidx/releases/compose-kotlin">compatibility map</a>. Leaving out `compose_version&quot; seems to not affect the build issues. So,</p>
-<pre tabindex="0"><code>id &#39;org.jetbrains.kotlin.android&#39; version &#34;1.8.10&#34; apply false
+<pre tabindex="0"><code>id 'org.jetbrains.kotlin.android' version &quot;1.8.10&quot; apply false
 </code></pre><p>and</p>
 <pre tabindex="0"><code>composeOptions {
-     kotlinCompilerExtensionVersion &#34;1.4.4&#34;
+     kotlinCompilerExtensionVersion &quot;1.4.4&quot;
 }
 </code></pre><p>needs to sync together based on the compatibility map. After fixing the sync, I haven&rsquo;t experienced any build issues when upgrading core components for the Compose.</p>
 <p>The Android version I&rsquo;m using is</p>
@@ -1047,7 +1064,7 @@ Build #AI-221.6008.13.2211.9619390, built on February 17, 2023
 			 <p>If you encounter a Render Problem issue on your Android Studio, like the one below.</p>
 <!-- raw HTML omitted -->
 <p>The solution I came up with is to use the Material Styles as your app theme.</p>
-<pre tabindex="0"><code>&lt;style name=&#34;AppTheme&#34; parent=&#34;@style/Theme.Material3.Light&#34;&gt;
+<pre tabindex="0"><code>&lt;style name=&quot;AppTheme&quot; parent=&quot;@style/Theme.Material3.Light&quot;&gt;
 &lt;/style&gt;
 </code></pre>
 		</div>
@@ -1141,9 +1158,9 @@ Build #AI-221.6008.13.2211.9619390, built on February 17, 2023
 <h3 id="initial-commit">Initial commit</h3>
 <pre tabindex="0"><code>import requests
 
-file = open(&#34;index.md&#34;, &#34;r&#34;)
+file = open(&quot;index.md&quot;, &quot;r&quot;)
 line = file.read()
-print(&#34;Read = %s&#34; % (line))
+print(&quot;Read = %s&quot; % (line))
 </code></pre><p>So far, so good.</p>
 <h3 id="find-all-the-png-files">Find all the png files</h3>
 <p>The next step is to find all the URL images with <code>.png</code> extensions. Time to use Regex I guess.</p>
@@ -1152,20 +1169,20 @@ print(&#34;Read = %s&#34; % (line))
 <pre tabindex="0"><code>import requests
 import re
 
-file = open(&#34;index.md&#34;, &#34;r&#34;)
+file = open(&quot;index.md&quot;, &quot;r&quot;)
 line = file.read()
 
-result = re.findall(r&#39;(https?://[^\s]+)&#39;, line)
+result = re.findall(r'(https?://[^\s]+)', line)
 print(result)
 </code></pre><!-- raw HTML omitted -->
 <p>Looks promising. Let&rsquo;s loop through it.</p>
 <pre tabindex="0"><code>import requests
 import re
 
-file = open(&#34;index.md&#34;, &#34;r&#34;)
+file = open(&quot;index.md&quot;, &quot;r&quot;)
 line = file.read()
 
-results = re.findall(r&#39;(https?://[^\s]+)&#39;, line)
+results = re.findall(r'(https?://[^\s]+)', line)
 
 for result in results:
 	print(result)
@@ -1175,13 +1192,13 @@ for result in results:
 <pre tabindex="0"><code>import requests
 import re
 
-file = open(&#34;index.md&#34;, &#34;r&#34;)
+file = open(&quot;index.md&quot;, &quot;r&quot;)
 line = file.read()
 
-results = re.findall(r&#39;(https?://[^\s]+)&#39;, line)
+results = re.findall(r'(https?://[^\s]+)', line)
 
 for result in results:
-	indexOfPng = result.find(&#34;?&#34;)
+	indexOfPng = result.find(&quot;?&quot;)
 	updatedResult = result[:indexOfPng]
 	print(updatedResult)
 </code></pre><p>Not the most elegant of solutions but it worked.</p>
@@ -1193,13 +1210,13 @@ import re
 import os
 from urllib.parse import urlparse
 
-file = open(&#34;index.md&#34;, &#34;r&#34;)
+file = open(&quot;index.md&quot;, &quot;r&quot;)
 line = file.read()
 
-results = re.findall(r&#39;(https?://[^\s]+)&#39;, line)
+results = re.findall(r'(https?://[^\s]+)', line)
 
 for result in results:
-	indexOfPng = result.find(&#34;?&#34;)
+	indexOfPng = result.find(&quot;?&quot;)
 	updatedResult = result[:indexOfPng]
 	# Get the filename
 	parse = urlparse(result)
@@ -1213,22 +1230,22 @@ import os
 from urllib.parse import urlparse
 from urllib.request import urlopen
 
-file = open(&#34;index.md&#34;, &#34;r&#34;)
+file = open(&quot;index.md&quot;, &quot;r&quot;)
 line = file.read()
 
-results = re.findall(r&#39;(https?://[^\s]+)&#39;, line)
+results = re.findall(r'(https?://[^\s]+)', line)
 
 for result in results:
 
 	# Filter only Wordpress domains
-	if &#34;wordpress.com&#34; in result:
+	if &quot;wordpress.com&quot; in result:
 		# print(result)
 		# Create folder
-		if not os.path.exists(&#34;images&#34;):
-			os.makedirs(&#34;images&#34;)
+		if not os.path.exists(&quot;images&quot;):
+			os.makedirs(&quot;images&quot;)
 
 		# Remove unnecessary characters in the URL
-		indexOfPng = result.find(&#34;?&#34;)
+		indexOfPng = result.find(&quot;?&quot;)
 		updatedResult = result[:indexOfPng]
 		# print(updatedResult)
 
@@ -1237,12 +1254,13 @@ for result in results:
 		filename = os.path.basename(parse.path)
 
 		# Create a file path
-		filePath = os.path.join(&#34;images&#34;, filename)
+		filePath = os.path.join(&quot;images&quot;, filename)
 		print(filePath)
 
 		request = requests.get(updatedResult)
-		with open(filePath, &#34;wb&#34;) as file:
+		with open(filePath, &quot;wb&quot;) as file:
 			file.write(request.content)
+
 </code></pre><!-- raw HTML omitted -->
 
 		</div>
@@ -1286,7 +1304,7 @@ NavigationStack {
       Button(role: .destructive, action: {
          goToSettings = true
       }) {
-         Label(&#34;Settings&#34;, systemImage: &#34;gearshape.fill&#34;).foregroundColor(colorForeground)
+         Label(&quot;Settings&quot;, systemImage: &quot;gearshape.fill&quot;).foregroundColor(colorForeground)
       }
    }
    .navigationDestination(isPresented: $goToSettings, destination: {
@@ -1340,20 +1358,20 @@ Creating Tests/iOSTests/iOSTests.swift
 </code></pre><p>After, I opened <code>Package.swift</code> file and added the libraries inside the <code>dependencies</code> bracket.</p>
 <pre tabindex="0"><code>dependencies: [
         // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: &#34;1.0.0&#34;),
-        .package(url: &#34;https://github.com/scinfu/SwiftSoup&#34;, branch: &#34;master&#34;),
-        .package(url: &#34;https://github.com/onevcat/Kingfisher&#34;, branch: &#34;master&#34;),
-        .package(url: &#34;https://github.com/realm/realm-cocoa&#34;, branch: &#34;master&#34;),
-        .package(url: &#34;https://github.com/optonaut/ActiveLabel.swift&#34;, branch: &#34;master&#34;),
-        .package(url: &#34;https://github.com/mixpanel/mixpanel-swift&#34;, branch: &#34;master&#34;),
-        .package(url: &#34;https://github.com/BastiaanJansen/toast-swift&#34;, branch: &#34;main&#34;)
+        // .package(url: /* package url */, from: &quot;1.0.0&quot;),
+        .package(url: &quot;https://github.com/scinfu/SwiftSoup&quot;, branch: &quot;master&quot;),
+        .package(url: &quot;https://github.com/onevcat/Kingfisher&quot;, branch: &quot;master&quot;),
+        .package(url: &quot;https://github.com/realm/realm-cocoa&quot;, branch: &quot;master&quot;),
+        .package(url: &quot;https://github.com/optonaut/ActiveLabel.swift&quot;, branch: &quot;master&quot;),
+        .package(url: &quot;https://github.com/mixpanel/mixpanel-swift&quot;, branch: &quot;master&quot;),
+        .package(url: &quot;https://github.com/BastiaanJansen/toast-swift&quot;, branch: &quot;main&quot;)
     ],
 </code></pre><p>After saving, run <code>swift package resolve</code> in the command line. Swift will then fetch the libraries and compile them. Swift will also create a file called <code>Package.resolved</code>.</p>
 <p>Also, as of September 15 using <code>macos-latest</code> as the runner in GitHub Actions won&rsquo;t work. So I have to use <code>macos-12</code> instead. I got this answer from <a href="https://stackoverflow.com/questions/67185817/package-resolved-file-is-corrupted-or-malformed">here</a>.</p>
 <p>Push to git repo. <code>xcodebuild</code> is now working and seems to be fetching the libraries now but threw another error about my &ldquo;provisioning profiles not found&rdquo;. I don&rsquo;t need those profiles setup for now, I just want GA to compile our iOS project successfully.</p>
 <p>So, I updated the run command in our <code>YAML</code> file.</p>
 <pre tabindex="0"><code>- name: Build
-     run: xcodebuild clean build CODE_SIGN_IDENTITY=&#34;&#34; CODE_SIGNING_REQUIRED=NO -scheme OnlineJobsPH
+     run: xcodebuild clean build CODE_SIGN_IDENTITY=&quot;&quot; CODE_SIGNING_REQUIRED=NO -scheme OnlineJobsPH
      working-directory: ./iOS
 </code></pre><!-- raw HTML omitted -->
 <p>Build successful. Yay!</p>
@@ -1436,9 +1454,9 @@ Creating Tests/iOSTests/iOSTests.swift
 		<div class="e-content">
 			 <p>Our app uses Mixpanel for analytical and strategic purposes. This post is about my refactoring journey.</p>
 <p>Mixpanel introduced another parameter in their <code>getInstance()</code> method called <code>trackAutomaticEvents</code> which is of a <code>boolean</code> data type. Now, this is the part that I didn&rsquo;t anticipate because located throughout our codebase is this single line.</p>
-<pre tabindex="0"><code>MixpanelAPI.getInstance(this, Constants.MIXPANEL_TOKEN).track(&#34;Log In&#34;)
+<pre tabindex="0"><code>MixpanelAPI.getInstance(this, Constants.MIXPANEL_TOKEN).track(&quot;Log In&quot;)
 </code></pre><p>But right now it is broken since the proper way to implement on the new version is this.</p>
-<pre tabindex="0"><code>MixpanelAPI.getInstance(this, Constants.MIXPANEL_TOKEN, true).track(&#34;Log In&#34;)
+<pre tabindex="0"><code>MixpanelAPI.getInstance(this, Constants.MIXPANEL_TOKEN, true).track(&quot;Log In&quot;)
 </code></pre><p>Behold them compile errors.</p>
 <!-- raw HTML omitted -->
 <p>You might think why not use the Find All option in Android Studio? I could, but this is to future proof our codebase in case another <code>getInstance()</code> refactor in the future.</p>
@@ -1457,7 +1475,7 @@ object Mixpanel {
 </code></pre><p>Now that I have isolated or &ldquo;wrapped&rdquo; in a separate class, I can now implement condition statements inside it. Most of my Mixpanel method calls were wrapped in a <code>!isDebuggable</code> condition and are sprinkled everywhere in our codebase. Not good.</p>
 <pre tabindex="0"><code>val isDebuggable = 0 != applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE
 if (!isDebuggable) {
-     MixpanelAPI.getInstance(this@MainActivity, Constants.MIXPANEL_TOKEN).track(&#34;Session - Employer&#34;)
+     MixpanelAPI.getInstance(this@MainActivity, Constants.MIXPANEL_TOKEN).track(&quot;Session - Employer&quot;)
 }
 </code></pre><h3 id="code-refactor">Code Refactor</h3>
 <p>Now, that I have a separate <code>object</code> class, I can just call the condition there instead.</p>
@@ -1477,10 +1495,10 @@ object Mixpanel {
 </code></pre><p>So from this code block</p>
 <pre tabindex="0"><code>val isDebuggable = 0 != context?.applicationInfo!!.flags and ApplicationInfo.FLAG_DEBUGGABLE
  if (!isDebuggable) {
-      MixpanelAPI.getInstance(activity, Constants.MIXPANEL_TOKEN).track(&#34;Share Profile&#34;)
+      MixpanelAPI.getInstance(activity, Constants.MIXPANEL_TOKEN).track(&quot;Share Profile&quot;)
  }
 </code></pre><p>to</p>
-<pre tabindex="0"><code>Mixpanel.track(requireActivity(), &#34;Share Profile&#34;)
+<pre tabindex="0"><code>Mixpanel.track(requireActivity(), &quot;Share Profile&quot;)
 </code></pre><h2 id="future-proof-and-conclusion">Future Proof and Conclusion</h2>
 <p>If Mixpanel decides to update their <code>getInstance()</code> method, then I only have to change that one line in my <code>object Mixpanel</code>. This code refactor has been a long time coming. I’m just glad that I was able to push this out of the way. Now, on to the next refactor.</p>
 
@@ -1583,13 +1601,13 @@ object Mixpanel {
 			 <p>First of all, I am on Manjaro Xfce environment for this example.</p>
 <p>We need to install Gradle. I tried to install Gradle using ArchLinux&rsquo;s <code>pacman</code> but it was very outdated. So based on <a href="https://docs.gradle.org/current/userguide/installation.html">Gradle&rsquo;s installation guide</a> one option is to use a package manager like Sdkman.</p>
 <p>Let&rsquo;s go ahead and install SDKMAN!.</p>
-<pre tabindex="0"><code>curl -s &#34;https://get.sdkman.io&#34; | bash
-source &#34;$HOME/.sdkman/bin/sdkman-init.sh&#34;
+<pre tabindex="0"><code>curl -s &quot;https://get.sdkman.io&quot; | bash
+source &quot;$HOME/.sdkman/bin/sdkman-init.sh&quot;
 </code></pre><p>After running SDKMAN!, close the current terminal and open a new one.
 Then run</p>
 <pre tabindex="0"><code>sdk install gradle
 </code></pre><p>But when I try to run <code>gradle</code> or <code>java</code>, it will throw an error No Java found.</p>
-<pre tabindex="0"><code>ERROR: JAVA_HOME is not set and no &#39;java&#39; command could be found in your PATH.
+<pre tabindex="0"><code>ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
 
 Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation.
@@ -1824,7 +1842,7 @@ struct DetailsView: View {
     @Binding var url: String
     
     var body: some View {
-        Text(&#34;Hello, World!&#34;)
+        Text(&quot;Hello, World!&quot;)
     }
 }
 
@@ -1869,7 +1887,7 @@ struct DetailsView_Previews: PreviewProvider {
 		<div class="e-content">
 			 <p>I haven&rsquo;t yet written about this year&rsquo;s WWDC 2022. In fact, I am still going through all the developer videos while also exploring Xcode&rsquo;s Multiplatform introduced this year. I will try to write down some of my initial thoughts and frustrations from this year&rsquo;s Apple WWDC event.</p>
 <h4 id="webview-in-swiftui-where-art-thou">WebView in SwiftUI, where art thou?</h4>
-<p>I tried to ask this question in Slack during one of Apple&rsquo;s Digital Labs, I guess it was with the SwiftUI team. But it was filtered out and deemed unworthy of the answer. This is why it is frustrating, especially if I&rsquo;m using Multiplatform. Around 30-40% of our app needs WebView. Don&rsquo;t ask, this is the boss&rsquo; request.</p>
+<p>I tried to ask this question in Slack during one of Apple&rsquo;s Digital Labs, I guess it was with the SwiftUI team. But it was filtered out and deemed unworthy of the answer. This is why it is frustrating, especially if I&rsquo;m using Multiplatform. Around 30-40% of our app needs WebView. Don&rsquo;t ask, this is the boss' request.</p>
 <p>To implement WebView in our app, I have to create two separate files, each subclassing <code>UIViewRepresentable</code> for iOS and <code>NSViewRepresentable</code> for macOS. Also, the <code>coordinator</code> implementation has the exact implementation for both classes, thus another wasted time to refactor in the next iteration.</p>
 <p>If Apple could just give us a freaking <code>WebView()</code>.</p>
 <h4 id="wwdc-digital-lounges">WWDC Digital Lounges</h4>
@@ -1884,19 +1902,19 @@ struct DetailsView_Previews: PreviewProvider {
 <p>I am a huge Books app user and I love the new update and customization. But there was a couple of annoyance, first I can&rsquo;t seem to go back to the previous library. And they removed the good old page-flipping animation.</p>
 <h4 id="conditions-in-tabitem">Conditions in TabItem</h4>
 <p>I just found out you can wrap a condition on a <code>TabItem</code>. Imagine doing this in <code>UIKit</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>TabView {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> UserDefaults.standard.bool(forKey: Keys.isEmployer) {
-</span></span><span style="display:flex;"><span>        WorkersView()
-</span></span><span style="display:flex;"><span>            .tabItem {
-</span></span><span style="display:flex;"><span>                Label(<span style="color:#e6db74">&#34;Workers&#34;</span>, systemImage: <span style="color:#e6db74">&#34;person.3&#34;</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    ProfileView()
-</span></span><span style="display:flex;"><span>        .tabItem {
-</span></span><span style="display:flex;"><span>            Label(<span style="color:#e6db74">&#34;Profile&#34;</span>, systemImage: <span style="color:#e6db74">&#34;person&#34;</span>)
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img src="https://media.giphy.com/media/dgLfHZCh77utSjgpG9/giphy.gif" alt="This is the way"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TabView {
+    <span style="color:#66d9ef">if</span> UserDefaults.standard.bool(forKey: Keys.isEmployer) {
+        WorkersView()
+            .tabItem {
+                Label(<span style="color:#e6db74">&#34;Workers&#34;</span>, systemImage: <span style="color:#e6db74">&#34;person.3&#34;</span>)
+            }
+    }
+    ProfileView()
+        .tabItem {
+            Label(<span style="color:#e6db74">&#34;Profile&#34;</span>, systemImage: <span style="color:#e6db74">&#34;person&#34;</span>)
+        }
+}
+</code></pre></div><p><img src="https://media.giphy.com/media/dgLfHZCh77utSjgpG9/giphy.gif" alt="This is the way"></p>
 <h4 id="xcode-cloud-is-cool-but">Xcode Cloud is cool but</h4>
 <!-- raw HTML omitted -->
 <p>I&rsquo;m not sure if I want to add some Xcode tags in our git commit. It might make it unreadable.</p>
@@ -2093,9 +2111,9 @@ struct DetailsView_Previews: PreviewProvider {
 <h4 id="detach-from-head">Detach from head</h4>
 <pre tabindex="0"><code>git checkout 7b027ef
 </code></pre><p><code>7b027ef</code> could be any hash, this is just from a real-world example. Then a long-ass message will appear. This seems scary to read but no need to panic. Just continue with git tagging.</p>
-<pre tabindex="0"><code>Note: switching to &#39;7b027ef&#39;.
+<pre tabindex="0"><code>Note: switching to '7b027ef'.
 
-You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
 state without impacting any branches by switching back to a branch.
 
@@ -2110,7 +2128,7 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 </code></pre><p>Time to git tag and push.</p>
-<pre tabindex="0"><code>git tag -a ios-v5.3.4 -m &#34;5.3.4 (113)&#34;
+<pre tabindex="0"><code>git tag -a ios-v5.3.4 -m &quot;5.3.4 (113)&quot;
 git push origin ios-v5.3.4
 </code></pre><p>Here comes the tricky part, how to get back to the previous branch before the head was detached. Simple just run checkout again.</p>
 <pre tabindex="0"><code>git checkout develop
@@ -2127,49 +2145,52 @@ git push origin ios-v5.3.4
 
 		<div class="e-content">
 			 <p>Next on the task is how to extend the class <code>WKNavigationDelegate</code> so I can call the <a href="https://developer.apple.com/documentation/webkit/wkwebview/1415017-evaluatejavascript">evaluateJavascript()</a> function.</p>
-<p>We used an &rsquo; extension&rsquo; in our existing iOS app using <code>UIKit</code>. But I found out, that this won&rsquo;t work when using SwiftUI.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">MyJobsViewController</span>: WKNavigationDelegate {
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>After further Googling, research and internet digging I learned that I need to use <a href="https://developer.apple.com/documentation/swiftui/uiviewcontrollerrepresentable/makecoordinator()-32trb">makeCoordinator()</a> function.</p>
+<p>We used an ' extension' in our existing iOS app using <code>UIKit</code>. But I found out, that this won&rsquo;t work when using SwiftUI.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+<span style="color:#66d9ef">extension</span> <span style="color:#a6e22e">MyJobsViewController</span>: WKNavigationDelegate {
+}
+
+</code></pre></div><p>After further Googling, research and internet digging I learned that I need to use <a href="https://developer.apple.com/documentation/swiftui/uiviewcontrollerrepresentable/makecoordinator()-32trb">makeCoordinator()</a> function.</p>
 <blockquote>
 <p>Creates the custom instance that you use to communicate changes from your view controller to other parts of your SwiftUI interface.</p>
 </blockquote>
 <p>First, I wrote an inner class called <code>Coordinator</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Coordinator</span>: NSObject, WKNavigationDelegate {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> parent: OnlineJobsWebView
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">init</span>(<span style="color:#66d9ef">_</span> parent: OnlineJobsWebView) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">self</span>.parent = parent
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">webView</span>(<span style="color:#66d9ef">_</span> webView: WKWebView, didFinish navigation: WKNavigation!) {
-</span></span><span style="display:flex;"><span>            webView.evaluateJavaScript(Keys.javascriptRemoveElements, completionHandler: {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">_</span>, error <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>            })
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Then in the main class</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">OnlineJobsWebView</span>: NSViewRepresentable {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeCoordinator</span>() -&gt; Coordinator {
-</span></span><span style="display:flex;"><span>        Coordinator(<span style="color:#66d9ef">self</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">var</span> url: URL
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeNSView</span>(context: Context) -&gt; WKWebView {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> WKWebView()
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateNSView</span>(<span style="color:#66d9ef">_</span> webView: WKWebView, context: Context) {
-</span></span><span style="display:flex;"><span>        webView.navigationDelegate = context.coordinator
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Evaluate Javascript will now work at this point.</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>This implementation feels a little hacky. Why wouldn&rsquo;t Apple just introduce a <code>WebView</code> for SwiftUI? Going through all this is just painful.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Coordinator</span>: NSObject, WKNavigationDelegate {
+        <span style="color:#66d9ef">let</span> parent: OnlineJobsWebView
+        
+        <span style="color:#66d9ef">init</span>(<span style="color:#66d9ef">_</span> parent: OnlineJobsWebView) {
+            <span style="color:#66d9ef">self</span>.parent = parent
+        }
+        
+        <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">webView</span>(<span style="color:#66d9ef">_</span> webView: WKWebView, didFinish navigation: WKNavigation!) {
+            webView.evaluateJavaScript(Keys.javascriptRemoveElements, completionHandler: {
+                <span style="color:#66d9ef">_</span>, error <span style="color:#66d9ef">in</span>
+            })
+        }
+}
+
+</code></pre></div><p>Then in the main class</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">OnlineJobsWebView</span>: NSViewRepresentable {
+
+     <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeCoordinator</span>() -&gt; Coordinator {
+        Coordinator(<span style="color:#66d9ef">self</span>)
+    }
+
+     <span style="color:#66d9ef">var</span> url: URL
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeNSView</span>(context: Context) -&gt; WKWebView {
+        <span style="color:#66d9ef">return</span> WKWebView()
+    }
+
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateNSView</span>(<span style="color:#66d9ef">_</span> webView: WKWebView, context: Context) {
+        webView.navigationDelegate = context.coordinator
+        <span style="color:#75715e">// Evaluate Javascript will now work at this point.</span>
+    }
+}
+
+</code></pre></div><p>This implementation feels a little hacky. Why wouldn&rsquo;t Apple just introduce a <code>WebView</code> for SwiftUI? Going through all this is just painful.</p>
 <p><img src="https://media.giphy.com/media/7T33BLlB7NQrjozoRB/giphy.gif" alt="Hide the pain"></p>
 
 		</div>
@@ -2184,38 +2205,40 @@ git push origin ios-v5.3.4
 
 		<div class="e-content">
 			 <p>There is no WebView in SwiftUI, so you have to use the <code>NSViewRepresentable</code> class.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">WebKit</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">OnlineJobsWebView</span>: NSViewRepresentable {
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> url: URL
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeNSView</span>(context: Context) -&gt; WKWebView {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> WKWebView()
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateNSView</span>(<span style="color:#66d9ef">_</span> webView: WKWebView, context: Context) {
-</span></span><span style="display:flex;"><span>        webView.load(URLRequest(url: url))
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>And you call it in your SwiftUI <code>View</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AccountView</span>: View {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> body: some View {
-</span></span><span style="display:flex;"><span>        OnlineJobsWebView(url: URL(string: <span style="color:#e6db74">&#34;https://google.com&#34;</span>)<span style="color:#f92672">!</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AccountView_Previews</span>: PreviewProvider {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> previews: some View {
-</span></span><span style="display:flex;"><span>        AccountView()
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">WebKit</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">OnlineJobsWebView</span>: NSViewRepresentable {
+    
+    <span style="color:#66d9ef">var</span> url: URL
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeNSView</span>(context: Context) -&gt; WKWebView {
+        <span style="color:#66d9ef">return</span> WKWebView()
+    }
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateNSView</span>(<span style="color:#66d9ef">_</span> webView: WKWebView, context: Context) {
+        webView.load(URLRequest(url: url))
+    }
+}
+
+</code></pre></div><p>And you call it in your SwiftUI <code>View</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AccountView</span>: View {
+    <span style="color:#66d9ef">var</span> body: some View {
+        OnlineJobsWebView(url: URL(string: <span style="color:#e6db74">&#34;https://google.com&#34;</span>)<span style="color:#f92672">!</span>)
+    }
+}
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AccountView_Previews</span>: PreviewProvider {
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">var</span> previews: some View {
+        AccountView()
+    }
+}
+
+</code></pre></div>
 		</div>
 	  </div>
 	
@@ -2276,47 +2299,47 @@ git push origin ios-v5.3.4
 
 		<div class="e-content">
 			 <p>Today I learned how to call async/await functions with SwiftUI. This has the same flow with the sign in page but this one is using concurrency. On that note, I need to refactor the sign in page to use concurrency.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MainView</span>: View  {
-</span></span><span style="display:flex;"><span>@State <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> signInSuccess = <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> body: some View {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> signInSuccess {
-</span></span><span style="display:flex;"><span>            HomeView()
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            VStack {
-</span></span><span style="display:flex;"><span>                Image(<span style="color:#e6db74">&#34;OnlineJobs Logo&#34;</span>)
-</span></span><span style="display:flex;"><span>                    .aspectRatio(contentMode: .fit)
-</span></span><span style="display:flex;"><span>                    .frame(width: <span style="color:#ae81ff">50</span>, height: <span style="color:#ae81ff">30</span>)
-</span></span><span style="display:flex;"><span>                    .padding(.bottom, <span style="color:#ae81ff">50</span>)
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            .frame(minWidth: <span style="color:#ae81ff">500</span>, maxWidth: .infinity, minHeight: <span style="color:#ae81ff">300</span>, maxHeight: <span style="color:#ae81ff">800</span>)
-</span></span><span style="display:flex;"><span>            .background(Color(red: <span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>, green: <span style="color:#ae81ff">69</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>, blue: <span style="color:#ae81ff">112</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>))
-</span></span><span style="display:flex;"><span>            .task {
-</span></span><span style="display:flex;"><span>                await checkLoginStatus()
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Take note of the <code>.task{}</code> code block, this is the place to call your async function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MainView</span>: View  {
+@State <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> signInSuccess = <span style="color:#66d9ef">false</span>
+    
+    <span style="color:#66d9ef">var</span> body: some View {
+        <span style="color:#66d9ef">if</span> signInSuccess {
+            HomeView()
+        } <span style="color:#66d9ef">else</span> {
+            VStack {
+                Image(<span style="color:#e6db74">&#34;OnlineJobs Logo&#34;</span>)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: <span style="color:#ae81ff">50</span>, height: <span style="color:#ae81ff">30</span>)
+                    .padding(.bottom, <span style="color:#ae81ff">50</span>)
+            }
+            .frame(minWidth: <span style="color:#ae81ff">500</span>, maxWidth: .infinity, minHeight: <span style="color:#ae81ff">300</span>, maxHeight: <span style="color:#ae81ff">800</span>)
+            .background(Color(red: <span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>, green: <span style="color:#ae81ff">69</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>, blue: <span style="color:#ae81ff">112</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>))
+            .task {
+                await checkLoginStatus()
+            }
+        }
+    }
+}
+</code></pre></div><p>Take note of the <code>.task{}</code> code block, this is the place to call your async function.</p>
 <p>My async function looks like this</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">checkLoginStatus</span>() async {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> url = URL(string: Urls.main.employerJobs) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> request = URLRequest(url: url)
-</span></span><span style="display:flex;"><span>                request.httpMethod = <span style="color:#e6db74">&#34;GET&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">do</span> {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">let</span> (<span style="color:#66d9ef">_</span>, response) = <span style="color:#66d9ef">try</span> await URLSession.shared.data(<span style="color:#66d9ef">for</span>: request)
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> responseURL = response.url {
-</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> responseURL.absoluteString.contains(Urls.main.employerJobs) {
-</span></span><span style="display:flex;"><span>                            signInSuccess = <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>                        }
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">catch</span> {
-</span></span><span style="display:flex;"><span>                    signInSuccess = <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>When the server response URL matches the condition then <code>signInSuccess = true</code> is called. And this will then change the layout to <code>HomeView()</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">checkLoginStatus</span>() async {
+<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> url = URL(string: Urls.main.employerJobs) {
+                <span style="color:#66d9ef">var</span> request = URLRequest(url: url)
+                request.httpMethod = <span style="color:#e6db74">&#34;GET&#34;</span>
+                <span style="color:#66d9ef">do</span> {
+                    <span style="color:#66d9ef">let</span> (<span style="color:#66d9ef">_</span>, response) = <span style="color:#66d9ef">try</span> await URLSession.shared.data(<span style="color:#66d9ef">for</span>: request)
+                    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> responseURL = response.url {
+                        <span style="color:#66d9ef">if</span> responseURL.absoluteString.contains(Urls.main.employerJobs) {
+                            signInSuccess = <span style="color:#66d9ef">true</span>
+                        }
+                    }
+                } <span style="color:#66d9ef">catch</span> {
+                    signInSuccess = <span style="color:#66d9ef">false</span>
+                }
+            }
+}
+</code></pre></div><p>When the server response URL matches the condition then <code>signInSuccess = true</code> is called. And this will then change the layout to <code>HomeView()</code>.</p>
 
 		</div>
 	  </div>
@@ -2417,7 +2440,7 @@ git push origin ios-v5.3.4
 <h4 id="cant-wait-to-migrate-to-jetpack-compose">Can&rsquo;t wait to migrate to Jetpack Compose</h4>
 <p>I decided to migrate our app to Jetpack Compose starting next year. I am excited about this one.</p>
 <h4 id="google-play-sdk-index-if-my-feature-feature">Google Play SDK Index if my feature feature</h4>
-<p>You know how hard it is to keep track of each dependencies&rsquo; version. Hopefully, <a href="https://play.google.com/sdks">Google Play SDK Index</a> will solve that problem. Is this integrated already on AS? Will it warn me if a dependency is very old? I&rsquo;ll try to find out in the near future.</p>
+<p>You know how hard it is to keep track of each dependencies' version. Hopefully, <a href="https://play.google.com/sdks">Google Play SDK Index</a> will solve that problem. Is this integrated already on AS? Will it warn me if a dependency is very old? I&rsquo;ll try to find out in the near future.</p>
 <h4 id="logcat-v2">Logcat V2</h4>
 <p>I&rsquo;m a Logcat person. Can&rsquo;t wait to try it.</p>
 <h4 id="baseline-profiles">Baseline Profiles</h4>
@@ -2498,46 +2521,47 @@ git push origin ios-v5.3.4
 <p>But on macOS using SwiftUI, here&rsquo;s how I did it. It took me a while to get this right. And, still not entirely sure if this is the way.</p>
 <p><img src="https://media.giphy.com/media/6UFgdU9hirj1pAOJyN/giphy.gif" alt="This is the way"></p>
 <p>Here&rsquo;s what my sign in view looks like, some parts are removed obviously for security reasons. But the conditional logic is the same.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SignInView</span>: View {
-</span></span><span style="display:flex;"><span>   @State <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> signInSuccess = <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> body: some View {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> signInSuccess {
-</span></span><span style="display:flex;"><span>           HomeView()
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>           Text(<span style="color:#e6db74">&#34;I&#39;m in sign in.&#34;</span>).padding()
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>First of all, the concept of <code>@State</code> is still foreign to me. It is both awesome and terrifying. Terrifying because it seems there are no lifecycles to follow and might cause some logic bugs in the future. This needs more serious study but in the meantime, <code>signInSuccess</code> variable holds the state of whether the user successfully signs in or not.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SignInView</span>: View {
+   @State <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> signInSuccess = <span style="color:#66d9ef">false</span>
+    <span style="color:#66d9ef">var</span> body: some View {
+        <span style="color:#66d9ef">if</span> signInSuccess {
+           HomeView()
+        <span style="color:#66d9ef">else</span> {
+           Text(<span style="color:#e6db74">&#34;I&#39;m in sign in.&#34;</span>).padding()
+        }
+    }
+}
+
+</code></pre></div><p>First of all, the concept of <code>@State</code> is still foreign to me. It is both awesome and terrifying. Terrifying because it seems there are no lifecycles to follow and might cause some logic bugs in the future. This needs more serious study but in the meantime, <code>signInSuccess</code> variable holds the state of whether the user successfully signs in or not.</p>
 <p>Now, here’s my sign in function.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">signIn</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">!</span>email.isEmpty <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>password.isEmpty {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> url = URL(string: Urls.main.authenticate) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">let</span> session = URLSession.shared
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> request = URLRequest(url: url)
-</span></span><span style="display:flex;"><span>                request.httpMethod = <span style="color:#e6db74">&#34;POST&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">let</span> body = <span style="color:#e6db74">&#34;info[email]=</span><span style="color:#e6db74">\(</span>email<span style="color:#e6db74">)</span><span style="color:#e6db74">&amp;info[password]=</span><span style="color:#e6db74">\(</span>password<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>                request.httpBody = body.data(using: .utf8)
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">let</span> task = session.dataTask(with: request) { [<span style="color:#66d9ef">self</span>]
-</span></span><span style="display:flex;"><span>                    data, response, error <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> error = error {
-</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">&#34;Login error </span><span style="color:#e6db74">\(</span>error<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                    } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                        <span style="color:#75715e">// No errors found</span>
-</span></span><span style="display:flex;"><span>                        signInSuccess = <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                task.resume()
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><p>By the time the variable <code>signInSuccess</code> is set to true,  SwiftUI will update the parts of the view heirarchy. That means the condition below will be triggered.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> signInSuccess {
-</span></span><span style="display:flex;"><span>     HomeView()
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>It’s frustrating how few SwiftUI for macOS tutorials are out there. Anyway, that&rsquo;s all for now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">signIn</span>() {
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">!</span>email.isEmpty <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>password.isEmpty {
+            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> url = URL(string: Urls.main.authenticate) {
+                <span style="color:#66d9ef">let</span> session = URLSession.shared
+                <span style="color:#66d9ef">var</span> request = URLRequest(url: url)
+                request.httpMethod = <span style="color:#e6db74">&#34;POST&#34;</span>
+                <span style="color:#66d9ef">let</span> body = <span style="color:#e6db74">&#34;info[email]=</span><span style="color:#e6db74">\(</span>email<span style="color:#e6db74">)</span><span style="color:#e6db74">&amp;info[password]=</span><span style="color:#e6db74">\(</span>password<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+                request.httpBody = body.data(using: .utf8)
+                <span style="color:#66d9ef">let</span> task = session.dataTask(with: request) { [<span style="color:#66d9ef">self</span>]
+                    data, response, error <span style="color:#66d9ef">in</span>
+                    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> error = error {
+                        print(<span style="color:#e6db74">&#34;Login error </span><span style="color:#e6db74">\(</span>error<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+                    } <span style="color:#66d9ef">else</span> {
+                        <span style="color:#75715e">// No errors found</span>
+                        signInSuccess = <span style="color:#66d9ef">true</span>
+                    }
+                }
+                task.resume()
+            }
+        }
+    }
+</code></pre></div><p>By the time the variable <code>signInSuccess</code> is set to true,  SwiftUI will update the parts of the view heirarchy. That means the condition below will be triggered.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">if</span> signInSuccess {
+     HomeView()
+}
+</code></pre></div><p>It’s frustrating how few SwiftUI for macOS tutorials are out there. Anyway, that&rsquo;s all for now.</p>
 
 		</div>
 	  </div>
@@ -2579,11 +2603,11 @@ git push origin ios-v5.3.4
 
 		<div class="e-content">
 			 <p>Jetpack Compose is not yet stable. I could not just make it work in an existing project. There seems to be a conflict between viewBinding and compose.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>buildFeatures {
-</span></span><span style="display:flex;"><span>     viewBinding = <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>     compose = <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Android&rsquo;s official documentation is not much of a help either.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">buildFeatures {
+     viewBinding = <span style="color:#66d9ef">true</span>
+     compose = <span style="color:#66d9ef">true</span>
+}
+</code></pre></div><p>Android&rsquo;s official documentation is not much of a help either.</p>
 
 		</div>
 	  </div>
@@ -2620,13 +2644,14 @@ git push origin ios-v5.3.4
         initViews()
 }
 </code></pre><p>or in iOS</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
-</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">super</span>.viewDidLoad()
-</span></span><span style="display:flex;"><span>     initViews()
-</span></span><span style="display:flex;"><span>     loadHtml()
-</span></span><span style="display:flex;"><span>     initObservers()
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Source codes will always evolve, I have contributed to over 40 (or more not sure) mobile app projects and it would be an honor if my <code>initViews()</code> stayed and were not refactored out. If you see this function call, there&rsquo;s a huge possibility it was written by me. Thanks!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
+     <span style="color:#66d9ef">super</span>.viewDidLoad()
+     initViews()
+     loadHtml()
+     initObservers()
+}
+
+</code></pre></div><p>Source codes will always evolve, I have contributed to over 40 (or more not sure) mobile app projects and it would be an honor if my <code>initViews()</code> stayed and were not refactored out. If you see this function call, there&rsquo;s a huge possibility it was written by me. Thanks!</p>
 
 		</div>
 	  </div>
@@ -2679,15 +2704,15 @@ git push origin ios-v5.3.4
 
 		<div class="e-content">
 			 <p>Now, the frames are static. I need the frames to be resizable. Time to Google. So eventually, you need to set maxWidth and maxHeight inside the <code>frame()</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SignInView</span>: View {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> body: some View {
-</span></span><span style="display:flex;"><span>        VStack {
-</span></span><span style="display:flex;"><span>            Text(<span style="color:#e6db74">&#34;Welcome to hourz.&#34;</span>)
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        .frame(maxWidth: <span style="color:#ae81ff">900</span>, maxHeight: <span style="color:#ae81ff">400</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SignInView</span>: View {
+    <span style="color:#66d9ef">var</span> body: some View {
+        VStack {
+            Text(<span style="color:#e6db74">&#34;Welcome to hourz.&#34;</span>)
+        }
+        .frame(maxWidth: <span style="color:#ae81ff">900</span>, maxHeight: <span style="color:#ae81ff">400</span>)
+    }
+}
+</code></pre></div>
 		</div>
 	  </div>
 	
@@ -2702,13 +2727,13 @@ git push origin ios-v5.3.4
 			 <p>Time to implement the sign in page. Welp.
 <!-- raw HTML omitted -->
 Ahh, forgot the frame().</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SignInView</span>: View {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> body: some View {
-</span></span><span style="display:flex;"><span>        Text(<span style="color:#e6db74">&#34;I&#39;m Sign In&#34;</span>)
-</span></span><span style="display:flex;"><span>            .frame(width: <span style="color:#ae81ff">700</span>, height: <span style="color:#ae81ff">300</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">SignInView</span>: View {
+    <span style="color:#66d9ef">var</span> body: some View {
+        Text(<span style="color:#e6db74">&#34;I&#39;m Sign In&#34;</span>)
+            .frame(width: <span style="color:#ae81ff">700</span>, height: <span style="color:#ae81ff">300</span>)
+    }
+}
+</code></pre></div><!-- raw HTML omitted -->
 
 		</div>
 	  </div>
