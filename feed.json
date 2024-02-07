@@ -7,6 +7,32 @@
 	"items": [
 		
 			{
+				"id": "http://lwgmnz.micro.blog/2024/02/07/ios-panic.html",
+				"title": "iOS Panic",
+				"content_html": "<p>My phone suddenly restarted and went into a full-blown panic. After restarting, there were some missing icons, I am on 17.4 beta 1. It&rsquo;s amazing how seldom iOS crashes, but when it does I also get a sense of panic.</p>\n<!-- raw HTML omitted -->\n<!-- raw HTML omitted -->\n",
+				"content_text": "My phone suddenly restarted and went into a full-blown panic. After restarting, there were some missing icons, I am on 17.4 beta 1. It's amazing how seldom iOS crashes, but when it does I also get a sense of panic.\n\n<img src=\"uploads/2024/9d2bb80f2d.png\" width=\"600\" height=\"1298\" alt=\"\">\n\n<img src=\"uploads/2024/65c412dbef.png\" width=\"600\" height=\"1298\" alt=\"\">\n",
+				"date_published": "2024-02-07T19:59:16+08:00",
+				"url": "https://law.gmnz.xyz/2024/02/07/ios-panic.html"
+			},
+			{
+				"id": "http://lwgmnz.micro.blog/2024/01/07/wrote-a-new.html",
+				"title": "Lucas app v0.1",
+				"content_html": "<p>Yesterday I developed a new typing notepad app for my kid with text-to-speech feature. I wrote a working prototype in under an hour. It&rsquo;s amazing how quickly you can create an app in SwiftUI.</p>\n<!-- raw HTML omitted -->\n<p>Our kid testing his app.</p>\n<!-- raw HTML omitted -->\n",
+				"content_text": "Yesterday I developed a new typing notepad app for my kid with text-to-speech feature. I wrote a working prototype in under an hour. It's amazing how quickly you can create an app in SwiftUI.\n\n<img src=\"uploads/2024/screenshot-2024-01-06-at-6.19.40pm.png\" width=\"600\" height=\"461\" alt=\"\">\n\nOur kid testing his app.\n\n<img src=\"uploads/2024/c7fb04d952.png\" width=\"600\" height=\"1298\" alt=\"\">\n",
+				"date_published": "2024-01-07T15:31:32+08:00",
+				"url": "https://law.gmnz.xyz/2024/01/07/wrote-a-new.html",
+				"tags": ["iOS","Projects","macOS"]
+			},
+			{
+				"id": "http://lwgmnz.micro.blog/2024/01/04/goals.html",
+				"title": "2024 Goals",
+				"content_html": "<p>I should write here more often. This is one of the few goals I have for 2024, personally.</p>\n<p>2023 was just a very hectic year for me and my family. Half of it was spent preparing for our new house, in terms of time and money. Now that we are settled in, this year should be all about upgrading and fixing our home. Make it more comfy, etc.</p>\n<p>One major goal for this year is for our family to start traveling, either on vacation or some errands. I am not sure if I should write about this too but who&rsquo;s reading anyway.</p>\n",
+				"content_text": "I should write here more often. This is one of the few goals I have for 2024, personally.\n\n2023 was just a very hectic year for me and my family. Half of it was spent preparing for our new house, in terms of time and money. Now that we are settled in, this year should be all about upgrading and fixing our home. Make it more comfy, etc.\n\nOne major goal for this year is for our family to start traveling, either on vacation or some errands. I am not sure if I should write about this too but who's reading anyway.\n\n\n\n",
+				"date_published": "2024-01-04T11:42:37+08:00",
+				"url": "https://law.gmnz.xyz/2024/01/04/goals.html",
+				"tags": ["Personal"]
+			},
+			{
 				"id": "http://lwgmnz.micro.blog/2023/12/17/retroapp-postcard.html",
 				"title": "Thank you Retro",
 				"content_html": "<p>I just want to say thank you to <a href=\"https://retro.app/\">Retro App</a> for their Postcard feature. I was able to send a postcard to my parents in the US, while I am currently on the other side of the world.</p>\n<p>I sent it for $0.</p>\n<!-- raw HTML omitted -->\n<p>I missed them so much, and something physical from here would be nice to send to them this Christmas. After, 6-7 days, they were able to receive it.</p>\n<!-- raw HTML omitted -->\n<!-- raw HTML omitted -->\n<p>To be honest, I would gladly pay for this service again in the future.</p>\n<p>Thank you Retro!</p>\n",
@@ -775,14 +801,6 @@
 				"content_text": "Today is me and my wife's anniversary! 6 years ago she said yes to me. Time flies!\n",
 				"date_published": "2022-05-14T20:27:51+08:00",
 				"url": "https://law.gmnz.xyz/2022/05/14/today-is-me.html"
-			},
-			{
-				"id": "http://lwgmnz.micro.blog/2022/05/14/album-of-the.html",
-				"title": "2022 Album of the Year",
-				"content_html": "<p>Mr. Morale &amp; the Big Steppers by Kendrick Lamar</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Mr. Morale & the Big Steppers by Kendrick Lamar\n\n\n<img src=\"uploads/2022/90383f0806.jpg\" width=\"600\" height=\"600\" alt=\"\" />\n",
-				"date_published": "2022-05-14T20:06:00+08:00",
-				"url": "https://law.gmnz.xyz/2022/05/14/album-of-the.html"
 			},
 			{
 				"id": "http://lwgmnz.micro.blog/2022/05/12/google-io-part.html",
