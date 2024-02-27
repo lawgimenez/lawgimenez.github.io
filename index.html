@@ -24,6 +24,85 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2024/02/27/kotlin-serialization-shenanigans.html">Kotlin Serialization Shenanigans</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2024/02/27/kotlin-serialization-shenanigans.html" class="u-url"><time class="dt-published" datetime="2024-02-27 18:46:11 &#43;0800">Feb 27, 2024</time></a>
+
+		<div class="e-content">
+			 <p>It&rsquo;s been a while since I did some serialization implementation on Android. I forgot how painful this was to implement. This is for my future self, in case I reencounter this stupid shenanigans.</p>
+<h2 id="gradle-imports">Gradle Imports</h2>
+<p>First, import Kotlinx Serialization and Jake Wharton&rsquo;s Retrofit Kotlinx Serialization Converter.</p>
+<pre tabindex="0"><code>implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3&quot;)
+implementation(&quot;com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0&quot;)
+</code></pre><p>On the <code>build.gradle</code> project level file, don&rsquo;t forget to also add the dependencies inside the plugin section.</p>
+<pre tabindex="0"><code>plugins {
+     id(&quot;org.jetbrains.kotlin.plugin.serialization&quot;) version &quot;1.9.22&quot; apply false
+}
+</code></pre><p>Back to your app level <code>build.gradle</code> file, also add the dependency inside the plugin section.</p>
+<pre tabindex="0"><code>plugins {
+     id(&quot;kotlinx-serialization&quot;)
+}
+</code></pre><h2 id="proguard-rules">Proguard rules</h2>
+<p>Don&rsquo;t forget about the proguard rules.</p>
+<pre tabindex="0"><code>-if @kotlinx.serialization.Serializable class **
+-keepclassmembers class &lt;1&gt; {
+   static &lt;1&gt;$Companion Companion;
+}
+
+# Keep `serializer()` on companion objects (both default and named) of serializable classes.
+-if @kotlinx.serialization.Serializable class ** {
+   static **$* *;
+}
+-keepclassmembers class &lt;2&gt;$&lt;3&gt; {
+   kotlinx.serialization.KSerializer serializer(...);
+}
+
+# Keep `INSTANCE.serializer()` of serializable objects.
+-if @kotlinx.serialization.Serializable class ** {
+   public static ** INSTANCE;
+}
+-keepclassmembers class &lt;1&gt; {
+   public static &lt;1&gt; INSTANCE;
+   kotlinx.serialization.KSerializer serializer(...);
+}
+
+# @Serializable and @Polymorphic are used at runtime for polymorphic serialization.
+-keepattributes RuntimeVisibleAnnotations,AnnotationDefault
+</code></pre><h2 id="kotlinxserializationmissingfieldexception">kotlinx.serialization.MissingFieldException</h2>
+<p>In your data class, it might seem that adding a nullable type to your variable is enough.</p>
+<pre tabindex="0"><code>@Serializable
+data class User(
+    @SerialName(&quot;user_id&quot;)
+    val userId: Int?
+)
+</code></pre><p>It&rsquo;s not. You need to add a default null value.</p>
+<pre tabindex="0"><code>@Serializable
+data class User(
+    @SerialName(&quot;user_id&quot;)
+    val userId: Int? = null
+)
+</code></pre><p>Shoutout to <a href="https://stackoverflow.com/a/72451819/1075466">Jere Schneider</a> and <a href="https://stackoverflow.com/a/64797277/1075466">tyczj</a> for the helpful answers that can&rsquo;t be found anywhere on Android&rsquo;s documentation.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://law.gmnz.xyz/2024/02/10/rate-my-setup.html">Rate My Setup</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2024/02/10/rate-my-setup.html" class="u-url"><time class="dt-published" datetime="2024-02-10 17:44:01 &#43;0800">Feb 10, 2024</time></a>
+
+		<div class="e-content">
+			 <p>Coding on TV might be one of my favorite developer setups. This was done via Apple&rsquo;s Mirror feature using AirPlay.</p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2024/02/07/ios-panic.html">iOS Panic</a></h1>
 		
 
