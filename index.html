@@ -24,26 +24,62 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2024/05/21/sick-of-all.html">Sick of all this ChatGPT</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2024/05/21/sick-of-all.html" class="u-url"><time class="dt-published" datetime="2024-05-21 19:23:28 &#43;0800">May 21, 2024</time></a>
+
+		<div class="e-content">
+			 <p>I guess there really is no escaping AI. It’s everywhere.</p>
+<!-- raw HTML omitted -->
+<p>I was very surprised today that iTerm2 is using ChatGPT API. My use case for terminal is just mostly git. That’s mostly it. It’s just git add, status, commit, push, pull and some git defaults if needed.</p>
+<p>So, I quickly went back to macOS’ default Terminal.app.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2024/02/27/kotlin-serialization-shenanigans.html">Kotlin Serialization Shenanigans</a></h1>
 		
 
 		<a href="https://law.gmnz.xyz/2024/02/27/kotlin-serialization-shenanigans.html" class="u-url"><time class="dt-published" datetime="2024-02-27 18:46:11 &#43;0800">Feb 27, 2024</time></a>
 
 		<div class="e-content">
-			 <p>It&rsquo;s been a while since I did some serialization implementation on Android. I forgot how painful this was to implement. This is for my future self, in case I reencounter this stupid shenanigans.</p>
+			 <p>It&rsquo;s been a while since I did some serialization implementation on Android. I forgot how painful this was to implement. This is for my future self, in case I reencounter this stupid shenanigans again.</p>
 <h2 id="gradle-imports">Gradle Imports</h2>
-<p>First, import Kotlinx Serialization and Jake Wharton&rsquo;s Retrofit Kotlinx Serialization Converter.</p>
-<pre tabindex="0"><code>implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3&quot;)
-implementation(&quot;com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0&quot;)
-</code></pre><p>On the <code>build.gradle</code> project level file, don&rsquo;t forget to also add the dependencies inside the plugin section.</p>
-<pre tabindex="0"><code>plugins {
-     id(&quot;org.jetbrains.kotlin.plugin.serialization&quot;) version &quot;1.9.22&quot; apply false
+<p>First, import Retrofit, Kotlinx Serialization and Jake Wharton&rsquo;s Retrofit Kotlinx Serialization Converter.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">implementation(<span style="color:#e6db74">&#34;com.squareup.retrofit2:retrofit:2.9.0&#34;</span>)
+implementation(<span style="color:#e6db74">&#34;org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3&#34;</span>)
+implementation(<span style="color:#e6db74">&#34;com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0&#34;</span>)
+</code></pre></div><p>On the <code>build.gradle</code> project level file, don&rsquo;t forget to also add the dependency inside the plugin section.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">plugins {
+     id(<span style="color:#e6db74">&#34;org.jetbrains.kotlin.plugin.serialization&#34;</span>) version <span style="color:#e6db74">&#34;1.9.22&#34;</span> apply <span style="color:#66d9ef">false</span>
 }
-</code></pre><p>Back to your app level <code>build.gradle</code> file, also add the dependency inside the plugin section.</p>
-<pre tabindex="0"><code>plugins {
-     id(&quot;kotlinx-serialization&quot;)
+</code></pre></div><p>Back to your app level <code>build.gradle</code> file, also add the dependency inside the plugin section.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">plugins {
+     id(<span style="color:#e6db74">&#34;kotlinx-serialization&#34;</span>)
 }
-</code></pre><h2 id="proguard-rules">Proguard rules</h2>
+</code></pre></div><h2 id="retrofit-helper-class">Retrofit Helper Class</h2>
+<p>Your Retrofit helper class should be like below. Take note of the import statements.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">import</span> com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+<span style="color:#66d9ef">import</span> kotlinx.serialization.json.Json
+<span style="color:#66d9ef">import</span> okhttp3.MediaType
+<span style="color:#66d9ef">import</span> retrofit2.Retrofit
+
+<span style="color:#66d9ef">object</span> <span style="color:#a6e22e">ApiHelper</span> {
+
+    <span style="color:#66d9ef">val</span> baseApi = <span style="color:#e6db74">&#34;https://api.somewebsite.com/&#34;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">val</span> contentType = MediaType.<span style="color:#66d9ef">get</span>(<span style="color:#e6db74">&#34;application/json&#34;</span>)
+
+    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">getInstance</span>(): Retrofit {
+        <span style="color:#66d9ef">return</span> Retrofit.Builder()
+            .baseUrl(baseApi)
+            .addConverterFactory(Json.asConverterFactory(contentType))
+            .build()
+    }
+}
+</code></pre></div><h2 id="proguard-rules">Proguard rules</h2>
 <p>Don&rsquo;t forget about the proguard rules.</p>
 <pre tabindex="0"><code>-if @kotlinx.serialization.Serializable class **
 -keepclassmembers class &lt;1&gt; {
@@ -71,18 +107,18 @@ implementation(&quot;com.jakewharton.retrofit:retrofit2-kotlinx-serialization-co
 -keepattributes RuntimeVisibleAnnotations,AnnotationDefault
 </code></pre><h2 id="kotlinxserializationmissingfieldexception">kotlinx.serialization.MissingFieldException</h2>
 <p>In your data class, it might seem that adding a nullable type to your variable is enough.</p>
-<pre tabindex="0"><code>@Serializable
-data class User(
-    @SerialName(&quot;user_id&quot;)
-    val userId: Int?
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#a6e22e">@Serializable</span>
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(
+    <span style="color:#a6e22e">@SerialName</span>(<span style="color:#e6db74">&#34;user_id&#34;</span>)
+    <span style="color:#66d9ef">val</span> userId: Int?
 )
-</code></pre><p>It&rsquo;s not. You need to add a default null value.</p>
-<pre tabindex="0"><code>@Serializable
-data class User(
-    @SerialName(&quot;user_id&quot;)
-    val userId: Int? = null
+</code></pre></div><p>It&rsquo;s not. You need to add a default null value.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#a6e22e">@Serializable</span>
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(
+    <span style="color:#a6e22e">@SerialName</span>(<span style="color:#e6db74">&#34;user_id&#34;</span>)
+    <span style="color:#66d9ef">val</span> userId: Int? = <span style="color:#66d9ef">null</span>
 )
-</code></pre><p>Shoutout to <a href="https://stackoverflow.com/a/72451819/1075466">Jere Schneider</a> and <a href="https://stackoverflow.com/a/64797277/1075466">tyczj</a> for the helpful answers that can&rsquo;t be found anywhere on Android&rsquo;s documentation.</p>
+</code></pre></div><p>Shoutout to <a href="https://stackoverflow.com/a/72451819/1075466">Jere Schneider</a> and <a href="https://stackoverflow.com/a/64797277/1075466">tyczj</a> for the helpful answers that can&rsquo;t be found anywhere on Android&rsquo;s documentation.</p>
 
 		</div>
 	  </div>
