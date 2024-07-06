@@ -24,6 +24,296 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2024/06/23/swiftui-text-highlights.html">SwiftUI Text highlights and menu</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2024/06/23/swiftui-text-highlights.html" class="u-url"><time class="dt-published" datetime="2024-06-29 12:23:39 &#43;0800">Jun 29, 2024</time></a>
+
+		<div class="e-content">
+			 <p>SwiftUI&rsquo;s <code>Text()</code> view does not support custom colored highlights and custom menus. Here&rsquo;s how I did it. The solution may not be up to everyone&rsquo;s programming standards but it worked.</p>
+<!-- raw HTML omitted -->
+<h2 id="customuitextview">CustomUITextView</h2>
+<p>Create a new file called <code>CustomUITextView</code> which will inherit UITextView. The initial code should look like</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomTextView</span>: UITextView {
+    
+}
+</code></pre></div><h2 id="textselectable">TextSelectable</h2>
+<p>Now, let&rsquo;s create another file called TextSelectable which will inherit <code>UIViewRepresentable</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TextSelectable</span>: UIViewRepresentable {
+    
+    <span style="color:#66d9ef">var</span> text: NSAttributedString
+    
+    <span style="color:#66d9ef">init</span>(text: NSAttributedString) {
+        <span style="color:#66d9ef">self</span>.text = text
+    }
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeUIView</span>(context: Context) -&gt; CustomTextView {
+        <span style="color:#66d9ef">let</span> customTextView = CustomTextView()
+        customTextView.delegate = context.coordinator
+        <span style="color:#66d9ef">return</span> customTextView
+    }
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateUIView</span>(<span style="color:#66d9ef">_</span> uiView: CustomTextView, context: Context) {
+        uiView.attributedText = text
+    }
+    
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeCoordinator</span>() -&gt; Coordinator {
+        Coordinator(text)
+    }
+    
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Coordinator</span>: NSObject, UITextViewDelegate {
+        
+        <span style="color:#66d9ef">var</span> text: NSAttributedString
+        
+        <span style="color:#66d9ef">init</span>(<span style="color:#66d9ef">_</span> text: NSAttributedString) {
+            <span style="color:#66d9ef">self</span>.text = text
+        }
+        
+        <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">textViewDidChange</span>(<span style="color:#66d9ef">_</span> textView: UITextView) {
+            <span style="color:#66d9ef">self</span>.text = textView.attributedText
+        }
+    }
+}
+</code></pre></div><h2 id="highlightext">highlighText()</h2>
+<p>Let&rsquo;s create a <code>highlighText()</code> function inside our <code>CustomUITextView()</code>. And we will <code>override</code> the <code>canPerformAction</code> function. This is where we will capture our highlighted text. The new <code>CustomUITextView</code> should be like the one below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomTextView</span>: UITextView {
+    
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">canPerformAction</span>(<span style="color:#66d9ef">_</span> action: Selector, withSender sender: Any?) -&gt; Bool {
+        <span style="color:#66d9ef">if</span> action == <span style="color:#66d9ef">#selector</span>(highlightText) {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+        }
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+    }
+    
+    <span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">highlightText</span>() {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> range = <span style="color:#66d9ef">self</span>.selectedTextRange, <span style="color:#66d9ef">let</span> selectedText = <span style="color:#66d9ef">self</span>.text(<span style="color:#66d9ef">in</span>: range) {
+            print(<span style="color:#e6db74">&#34;Selected text is </span><span style="color:#e6db74">\(</span>selectedText<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+        }
+    }
+}
+</code></pre></div><h2 id="custom-uimenu">Custom UIMenu</h2>
+<p>Next, we will create our own UIMenu when a user long presses or clicks on a highlighted text. We will override the <code>editMenu</code> function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomTextView</span>: UITextView {
+    
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">editMenu</span>(<span style="color:#66d9ef">for</span> textRange: UITextRange, suggestedActions: [UIMenuElement]) -&gt; UIMenu? {
+        <span style="color:#66d9ef">let</span> highlightTextAction = UIAction(title: <span style="color:#e6db74">&#34;Highlight Passage&#34;</span>) { action <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">self</span>.highlightText()
+        }
+        <span style="color:#66d9ef">let</span> addNotesAction = UIAction(title: <span style="color:#e6db74">&#34;Add Notes&#34;</span>) { action <span style="color:#66d9ef">in</span>
+            
+        }
+        <span style="color:#66d9ef">var</span> actions = suggestedActions
+        actions.insert(highlightTextAction, at: <span style="color:#ae81ff">0</span>)
+        actions.insert(addNotesAction, at: <span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">return</span> UIMenu(children: actions)
+    }
+    
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">canPerformAction</span>(<span style="color:#66d9ef">_</span> action: Selector, withSender sender: Any?) -&gt; Bool {
+        <span style="color:#66d9ef">if</span> action == <span style="color:#66d9ef">#selector</span>(highlightText) {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+        }
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+    }
+    
+    <span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">highlightText</span>() {
+        
+    }
+}
+</code></pre></div><h2 id="swiftui-view">SwiftUI View</h2>
+<p>Time to implement it in our SwiftUI View. Create a new file, I called mine <code>DetailsView</code>. Let&rsquo;s use a verse from Kendrick Lamar as an example text passed to our <code>TextSelectable</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">DetailsView</span>: View {
+
+    @State <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> attributedText = NSAttributedString(string: <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">           This feelin&#39; is brought to you by adrenaline and good rap
+</span><span style="color:#e6db74">           Black Pendleton ball cap (West, west, west)
+</span><span style="color:#e6db74">           We don&#39;t share the same synonym, fall back (West, west, west)
+</span><span style="color:#e6db74">           Been in it before Internet had new acts
+</span><span style="color:#e6db74">           Mimicking radio&#39;s nemesis made me wack
+</span><span style="color:#e6db74">           My innocence limited, the experience lacked
+</span><span style="color:#e6db74">           Ten of us with no tentative tactic that cracked
+</span><span style="color:#e6db74">           The mind of a literate writer, but I did it, in fact
+</span><span style="color:#e6db74">           You admitted it once I submitted it, wrapped in plastic
+</span><span style="color:#e6db74">           Remember scribblin&#39;, scratchin&#39; diligent sentences backwards
+</span><span style="color:#e6db74">           Visiting freestyle cyphers for your reaction
+</span><span style="color:#e6db74">           Now, I can live in a stadium, pack it the fastest
+</span><span style="color:#e6db74">           Gamblin&#39; Benjamin benefits, sinnin&#39; in traffic
+</span><span style="color:#e6db74">           Spinnin&#39; women in cartwheels, linen fabric on fashion
+</span><span style="color:#e6db74">           Winnin&#39; in every decision, Kendrick is master that mastered it
+</span><span style="color:#e6db74">           Isn&#39;t it lovely how menaces turned attraction?
+</span><span style="color:#e6db74">           Pivotin&#39; rappers, finish your fraction while writing blue magic
+</span><span style="color:#e6db74">           Thank God for rap
+</span><span style="color:#e6db74">           I would say it got me a plaque, but what&#39;s better than that?
+</span><span style="color:#e6db74">           The fact it brought me back home
+</span><span style="color:#e6db74">           &#34;&#34;&#34;</span>)
+    
+    <span style="color:#66d9ef">var</span> body: some View {
+        VStack {
+            TextSelectable(text: NSAttributedString(string: attributedText))
+        }
+        .padding()
+    }
+}
+</code></pre></div><p>Now try to run it in your emulator. And drag a portion of the text and click on our Highlight Passage menu.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>We should be able to capture the highlighted text.</p>
+<h2 id="colored-highlights">Colored highlights</h2>
+<p>Now that we can capture the highlighted texts, we want to add colors to it. Let&rsquo;s create a file called Highlight.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Highlight</span> {
+    
+    <span style="color:#66d9ef">let</span> text: String
+    <span style="color:#66d9ef">let</span> location: Int
+    <span style="color:#66d9ef">let</span> length: Int
+    <span style="color:#66d9ef">let</span> color: Color
+}
+</code></pre></div><p>Now, inside our <code>highlightText()</code> function, let&rsquo;s create that Highlight object. And we will pass this object to our NotificationCenter, where our DetailsView will listen and capture our object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomTextView</span>: UITextView {
+    
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">editMenu</span>(<span style="color:#66d9ef">for</span> textRange: UITextRange, suggestedActions: [UIMenuElement]) -&gt; UIMenu? {
+        <span style="color:#66d9ef">let</span> highlightTextAction = UIAction(title: <span style="color:#e6db74">&#34;Highlight Passage&#34;</span>) { action <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">self</span>.highlightText()
+        }
+        <span style="color:#66d9ef">let</span> addNotesAction = UIAction(title: <span style="color:#e6db74">&#34;Add Notes&#34;</span>) { action <span style="color:#66d9ef">in</span>
+            
+        }
+        <span style="color:#66d9ef">var</span> actions = suggestedActions
+        actions.insert(highlightTextAction, at: <span style="color:#ae81ff">0</span>)
+        actions.insert(addNotesAction, at: <span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">return</span> UIMenu(children: actions)
+    }
+    
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">canPerformAction</span>(<span style="color:#66d9ef">_</span> action: Selector, withSender sender: Any?) -&gt; Bool {
+        <span style="color:#66d9ef">if</span> action == <span style="color:#66d9ef">#selector</span>(highlightText) {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+        }
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+    }
+    
+    <span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">highlightText</span>() {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> range = <span style="color:#66d9ef">self</span>.selectedTextRange, <span style="color:#66d9ef">let</span> selectedText = <span style="color:#66d9ef">self</span>.text(<span style="color:#66d9ef">in</span>: range) {
+            print(<span style="color:#e6db74">&#34;Selected text is </span><span style="color:#e6db74">\(</span>selectedText<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+            <span style="color:#66d9ef">let</span> highlight = Highlight(text: selectedText, location: selectedRange.location, length: selectedRange.length, color: .purple)
+            <span style="color:#66d9ef">let</span> highlightDict = [
+                <span style="color:#e6db74">&#34;data&#34;</span>: highlight
+            ]
+            NotificationCenter.<span style="color:#66d9ef">default</span>.post(name: Notification.Name(<span style="color:#e6db74">&#34;highlightAdded&#34;</span>), object: <span style="color:#66d9ef">nil</span>, userInfo: highlightDict)
+        }
+    }
+}
+</code></pre></div><p>I am not sure if this is the best way, please let me know if you have any better solutions.</p>
+<p>And now in our <code>DetailsView</code>, let&rsquo;s capture it using <code>onReceive</code> modifier.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">DetailsView</span>: View {
+    
+    @State <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> attributedText = NSAttributedString(string: <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">           This feelin&#39; is brought to you by adrenaline and good rap
+</span><span style="color:#e6db74">           Black Pendleton ball cap (West, west, west)
+</span><span style="color:#e6db74">           We don&#39;t share the same synonym, fall back (West, west, west)
+</span><span style="color:#e6db74">           Been in it before Internet had new acts
+</span><span style="color:#e6db74">           Mimicking radio&#39;s nemesis made me wack
+</span><span style="color:#e6db74">           My innocence limited, the experience lacked
+</span><span style="color:#e6db74">           Ten of us with no tentative tactic that cracked
+</span><span style="color:#e6db74">           The mind of a literate writer, but I did it, in fact
+</span><span style="color:#e6db74">           You admitted it once I submitted it, wrapped in plastic
+</span><span style="color:#e6db74">           Remember scribblin&#39;, scratchin&#39; diligent sentences backwards
+</span><span style="color:#e6db74">           Visiting freestyle cyphers for your reaction
+</span><span style="color:#e6db74">           Now, I can live in a stadium, pack it the fastest
+</span><span style="color:#e6db74">           Gamblin&#39; Benjamin benefits, sinnin&#39; in traffic
+</span><span style="color:#e6db74">           Spinnin&#39; women in cartwheels, linen fabric on fashion
+</span><span style="color:#e6db74">           Winnin&#39; in every decision, Kendrick is master that mastered it
+</span><span style="color:#e6db74">           Isn&#39;t it lovely how menaces turned attraction?
+</span><span style="color:#e6db74">           Pivotin&#39; rappers, finish your fraction while writing blue magic
+</span><span style="color:#e6db74">           Thank God for rap
+</span><span style="color:#e6db74">           I would say it got me a plaque, but what&#39;s better than that?
+</span><span style="color:#e6db74">           The fact it brought me back home
+</span><span style="color:#e6db74">           &#34;&#34;&#34;</span>)
+
+    <span style="color:#66d9ef">var</span> body: some View {
+        VStack {
+            TextSelectable(text: NSAttributedString(string: attributedText))
+        }
+        .onReceive(NotificationCenter.<span style="color:#66d9ef">default</span>.publisher(<span style="color:#66d9ef">for</span>: Notification.Name(<span style="color:#e6db74">&#34;highlightAdded&#34;</span>))) { output <span style="color:#66d9ef">in</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> highlight = output.userInfo![<span style="color:#e6db74">&#34;data&#34;</span>] <span style="color:#66d9ef">as</span>? Highlight {
+                <span style="color:#66d9ef">let</span> mutableString = NSMutableAttributedString.<span style="color:#66d9ef">init</span>(string: attributedText.string)
+                <span style="color:#66d9ef">let</span> highlightAttributes: [NSAttributedString.Key: Any] = [
+                    .backgroundColor: highlight.color,
+                ]
+                mutableString.addAttributes(highlightAttributes, range: NSRange(location: highlight.location, length: highlight.length))
+                attributedText = mutableString
+            }
+        }
+        .padding()
+    }
+}
+</code></pre></div><p>Run the app and it will throw an error.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">*** Terminating app due to uncaught exception <span style="color:#e6db74">&#39;NSInvalidArgumentException&#39;</span>, reason: <span style="color:#e6db74">&#39;-[__SwiftValue set]: unrecognized selector sent to instance 0x600000c6c360&#39;</span>
+*** First throw call stack:
+<span style="color:#f92672">(</span>
+	<span style="color:#ae81ff">0</span>   CoreFoundation                      0x00000001804ae0f8 __exceptionPreprocess + <span style="color:#ae81ff">172</span>
+</code></pre></div><p>This is because of our color variable in our Highlight. Let&rsquo;s update our Highlights class to use <code>uiColor</code> instead.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SwiftUI</span>
+
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Highlight</span> {
+    
+    <span style="color:#66d9ef">let</span> text: String
+    <span style="color:#66d9ef">let</span> location: Int
+    <span style="color:#66d9ef">let</span> length: Int
+    <span style="color:#66d9ef">var</span> uiColor: UIColor
+    <span style="color:#66d9ef">var</span> color: Color {
+        <span style="color:#66d9ef">get</span> {
+            .<span style="color:#66d9ef">init</span>(uiColor: uiColor)
+        }
+        <span style="color:#66d9ef">set</span> {
+            uiColor = .<span style="color:#66d9ef">init</span>(newValue)
+        }
+    }
+}
+</code></pre></div><p>In our <code>highlighText()</code> function, use <code>uiColor</code> instead of <code>color</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">  <span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">highlightText</span>() {
+        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> range = <span style="color:#66d9ef">self</span>.selectedTextRange, <span style="color:#66d9ef">let</span> selectedText = <span style="color:#66d9ef">self</span>.text(<span style="color:#66d9ef">in</span>: range) {
+            print(<span style="color:#e6db74">&#34;Selected text is </span><span style="color:#e6db74">\(</span>selectedText<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+            <span style="color:#66d9ef">let</span> highlight = Highlight(text: selectedText, location: selectedRange.location, length: selectedRange.length, uiColor: .purple)
+            <span style="color:#66d9ef">let</span> highlightDict = [
+                <span style="color:#e6db74">&#34;data&#34;</span>: highlight
+            ]
+            NotificationCenter.<span style="color:#66d9ef">default</span>.post(name: Notification.Name(<span style="color:#e6db74">&#34;highlightAdded&#34;</span>), object: <span style="color:#66d9ef">nil</span>, userInfo: highlightDict)
+        }
+    }
+</code></pre></div><p>Also, update our <code>onReceive</code> highlight object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">            <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> highlight = output.userInfo![<span style="color:#e6db74">&#34;data&#34;</span>] <span style="color:#66d9ef">as</span>? Highlight {
+                <span style="color:#66d9ef">let</span> mutableString = NSMutableAttributedString.<span style="color:#66d9ef">init</span>(string: attributedText.string)
+                <span style="color:#66d9ef">let</span> highlightAttributes: [NSAttributedString.Key: Any] = [
+                    .backgroundColor: highlight.uiColor,
+                ]
+                mutableString.addAttributes(highlightAttributes, range: NSRange(location: highlight.location, length: highlight.length))
+                attributedText = mutableString
+            }
+        }
+</code></pre></div><p>Everything should work now.</p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2024/06/02/gradle-version-catalogs.html">Gradle Version Catalogs</a></h1>
 		
 
