@@ -24,6 +24,52 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2024/07/14/uitextview-using-textkit.html">UITextView using TextKit 1</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2024/07/14/uitextview-using-textkit.html" class="u-url"><time class="dt-published" datetime="2024-07-14 18:01:28 &#43;0800">Jul 14, 2024</time></a>
+
+		<div class="e-content">
+			 <p>I received this warning and was surprised to know that there are 2 TextKits, TextKit 1 and 2 in the iOS SDK.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">UITextView <span style="color:#ae81ff">0x1063c9000</span> <span style="color:#66d9ef">is</span> switching to TextKit <span style="color:#ae81ff">1</span> compatibility mode because its layoutManager was accessed. Break on void _UITextViewEnablingCompatibilityMode(UITextView <span style="color:#f92672">*</span>__strong, BOOL) to debug.
+</code></pre></div><p>I use <code>UITextView</code>’s <code>LayoutManager</code> so I can detect the text or a group of texts that the user has tapped or selected.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">textViewDidChangeSelection</span>(<span style="color:#66d9ef">_</span> textView: UITextView) {
+	textView.addGestureRecognizer(UITapGestureRecognizer(target: <span style="color:#66d9ef">self</span>, action: <span style="color:#66d9ef">#selector</span>(textTapped(<span style="color:#66d9ef">_</span>:))))
+}
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">@objc</span> <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">textTapped</span>(<span style="color:#66d9ef">_</span> sender: UITapGestureRecognizer) {
+	<span style="color:#66d9ef">let</span> textView = sender.view <span style="color:#66d9ef">as</span>! CustomTextView
+	<span style="color:#66d9ef">let</span> layoutManger = textView.layoutManager
+	<span style="color:#75715e">// Location of the tap</span>
+	<span style="color:#66d9ef">var</span> location = sender.location(<span style="color:#66d9ef">in</span>: textView)
+	location.x <span style="color:#f92672">-=</span> textView.textContainerInset.<span style="color:#66d9ef">left</span>
+	location.y <span style="color:#f92672">-=</span> textView.textContainerInset.top
+	<span style="color:#75715e">// Character index at tap location</span>
+	<span style="color:#66d9ef">let</span> characterIndex = layoutManger.characterIndex(<span style="color:#66d9ef">for</span>: location, <span style="color:#66d9ef">in</span>: textView.textContainer, fractionOfDistanceBetweenInsertionPoints: <span style="color:#66d9ef">nil</span>)
+}
+</code></pre></div><p>So based on the answer on the question <a href="https://stackoverflow.com/questions/75482602/replacing-layout-manager-in-uitextview-using-textkit-1">Replacing layout manager in UITextView using TextKit 1</a>, I need to override NSLayoutManager.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomTextView</span>: UITextView {
+
+	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">var</span> customLayoutManager = NSLayoutManager()
+
+	<span style="color:#66d9ef">init</span>(someData: String) {
+        <span style="color:#66d9ef">self</span>.someData = someData
+        <span style="color:#66d9ef">super</span>.<span style="color:#66d9ef">init</span>(frame: .zero, textContainer: <span style="color:#66d9ef">nil</span>)
+        customLayoutManager.textStorage = <span style="color:#66d9ef">self</span>.textStorage
+        customLayoutManager.addTextContainer(<span style="color:#66d9ef">self</span>.textContainer)
+        <span style="color:#66d9ef">self</span>.textContainer.replaceLayoutManager(customLayoutManager)
+    }
+
+	<span style="color:#66d9ef">override</span> <span style="color:#66d9ef">var</span> layoutManager: NSLayoutManager {
+        <span style="color:#66d9ef">return</span> customLayoutManager
+    }
+}
+</code></pre></div><p>#wiki/ios</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2024/06/23/swiftui-text-highlights.html">SwiftUI Text highlights and menu</a></h1>
 		
 
@@ -308,6 +354,7 @@
         }
 </code></pre></div><p>Everything should work now.</p>
 <!-- raw HTML omitted -->
+<p>You can find the code at <a href="https://github.com/lawgimenez/customtext">https://github.com/lawgimenez/customtext</a>.</p>
 
 		</div>
 	  </div>
