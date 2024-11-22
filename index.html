@@ -24,6 +24,47 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2024/11/22/collapsible-list-in.html">Collapsible List in SwiftUI</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2024/11/22/collapsible-list-in.html" class="u-url"><time class="dt-published" datetime="2024-11-22 19:13:23 &#43;0800">Nov 22, 2024</time></a>
+
+		<div class="e-content">
+			 <p>I wanted to share how I developed a comment thread using SwiftUI&rsquo;s <code>List</code>, like in the video below.</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>The code is just very simple, we will leverage List&rsquo;s <code>children</code> property. The code is very simple</p>
+<p><code>List(topStory, children: \.chain) { story in StoryDetailsRowView(story: story) } .listStyle(.plain) </code></p>
+<p>The main part is how we structure our data model. Take note of the <code>chain</code> variable.</p>
+<pre tabindex="0"><code>import Foundation
+
+class Story: Identifiable {
+
+    let id = UUID()
+    let user: User
+    let title: String
+    let content: String
+    let date: String
+    var chain: [Story]?
+    
+    init(user: User, title: String, content: String, date: String, chain: [Story]? = nil) {
+        self.user = user
+        self.title = title
+        self.content = content
+        self.date = date
+        self.chain = chain
+    }
+    
+    func setChain(_ chain: inout [Story]) {
+        self.chain = chain
+    }
+}
+
+</code></pre>
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2024/07/22/my-uses-as.html">My /uses/ as of July 2024</a></h1>
 		
 
