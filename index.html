@@ -24,6 +24,66 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://law.gmnz.xyz/2024/12/13/weird-behavior-in.html">Button() Gotcha</a></h1>
+		
+
+		<a href="https://law.gmnz.xyz/2024/12/13/weird-behavior-in.html" class="u-url"><time class="dt-published" datetime="2024-12-13 20:19:44 &#43;0800">Dec 13, 2024</time></a>
+
+		<div class="e-content">
+			 <p>I was implementing a filter feature on our app and decided to use <code>Button()</code> wrapped in <code>HStack</code>.</p>
+<pre tabindex="0"><code>List {
+     HStack {
+		Button {
+			selectedFilter = .fullTime
+			let _ = print(&quot;Full Time Selected&quot;)
+		} label: {
+			Text(&quot;Full Time&quot;)
+		}
+		Button {
+			selectedFilter = .partTime
+			let _ = print(&quot;Part Time Selected&quot;)
+		} label: {
+			Text(&quot;Part Time&quot;)
+		}
+		Button {
+			selectedFilter = .gig
+			let _ = print(&quot;Gig Selected&quot;)
+		} label: {
+			Text(&quot;Gig&quot;)
+		}
+     }
+}
+</code></pre><p>When I tap on the <code>Full Time</code> button, it will also call the other action tasks of the <code>Part Time</code> and <code>Gig</code> buttons. So it will output like</p>
+<pre tabindex="0"><code>Full Time
+Part Time
+Gig
+</code></pre><p>where, it should only call or perform <code>Full Time</code> action.</p>
+<p>So I migrated to Text’s <code>onTapGesture</code></p>
+<pre tabindex="0"><code>List {
+	HStack {
+		Text(&quot;Full Time&quot;)
+		.onTapGesture {
+			selectedFilter = .fullTime
+			let _ = print(&quot;Full Time Selected&quot;)
+		}
+		Text(&quot;Part Time&quot;)
+		.onTapGesture {
+			selectedFilter = .partTime
+			let _ = print(&quot;Part Time Selected&quot;)
+		}
+		Text(&quot;Gig&quot;)
+		.onTapGesture {
+			selectedFilter = .gig
+			let _ = print(&quot;Full Time Selected&quot;)
+		}
+	}
+}
+</code></pre>
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://law.gmnz.xyz/2024/11/22/collapsible-list-in.html">Collapsible List in SwiftUI</a></h1>
 		
 
@@ -33,33 +93,36 @@
 			 <p>I wanted to share how I developed a comment thread using SwiftUI&rsquo;s <code>List</code>, like in the video below.</p>
 <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>The code is just very simple, we will leverage List&rsquo;s <code>children</code> property. The code is very simple</p>
-<p><code>List(topStory, children: \.chain) { story in StoryDetailsRowView(story: story) } .listStyle(.plain) </code></p>
-<p>The main part is how we structure our data model. Take note of the <code>chain</code> variable.</p>
-<pre tabindex="0"><code>import Foundation
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">List(topStory, children: <span style="color:#960050;background-color:#1e0010">\</span>.chain) { story <span style="color:#66d9ef">in</span>
+     StoryDetailsRowView(story: story)
+}
+.listStyle(.plain)
+</code></pre></div><p>The main part is how we structure our data model. Take note of the <code>chain</code> variable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Foundation</span>
 
-class Story: Identifiable {
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Story</span>: Identifiable {
 
-    let id = UUID()
-    let user: User
-    let title: String
-    let content: String
-    let date: String
-    var chain: [Story]?
+    <span style="color:#66d9ef">let</span> id = UUID()
+    <span style="color:#66d9ef">let</span> user: User
+    <span style="color:#66d9ef">let</span> title: String
+    <span style="color:#66d9ef">let</span> content: String
+    <span style="color:#66d9ef">let</span> date: String
+    <span style="color:#66d9ef">var</span> chain: [Story]?
     
-    init(user: User, title: String, content: String, date: String, chain: [Story]? = nil) {
-        self.user = user
-        self.title = title
-        self.content = content
-        self.date = date
-        self.chain = chain
+    <span style="color:#66d9ef">init</span>(user: User, title: String, content: String, date: String, chain: [Story]? = <span style="color:#66d9ef">nil</span>) {
+        <span style="color:#66d9ef">self</span>.user = user
+        <span style="color:#66d9ef">self</span>.title = title
+        <span style="color:#66d9ef">self</span>.content = content
+        <span style="color:#66d9ef">self</span>.date = date
+        <span style="color:#66d9ef">self</span>.chain = chain
     }
     
-    func setChain(_ chain: inout [Story]) {
-        self.chain = chain
+    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setChain</span>(<span style="color:#66d9ef">_</span> chain: <span style="color:#66d9ef">inout</span> [Story]) {
+        <span style="color:#66d9ef">self</span>.chain = chain
     }
 }
 
-</code></pre>
+</code></pre></div>
 		</div>
 	  </div>
 	
